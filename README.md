@@ -1,0 +1,2 @@
+# magnode
+client of magline
