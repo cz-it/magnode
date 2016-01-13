@@ -26,7 +26,6 @@ typedef struct mn_frame_head_t
     uint8_t version;
     uint16_t cmd;
     uint32_t seq;
-    uint32_t agent_id;
     uint32_t length;
 
     

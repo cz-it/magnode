@@ -30,3 +30,15 @@
 
 # Debug files
 *.dSYM/
+
+
+build/Android/obj/
+build/MacOS/.DS_Store
+build/MacOS/magnode/build/
+build/MacOS/magnode/magnode.xcodeproj/project.xcworkspace/
+build/MacOS/magnode/magnode.xcodeproj/xcuserdata/
+build/iOS/.DS_Store
+build/iOS/magnode/.DS_Store
+build/iOS/magnode/build/
+build/iOS/magnode/magnode.xcodeproj/project.xcworkspace/
+build/iOS/magnode/magnode.xcodeproj/xcuserdata/

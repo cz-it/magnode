@@ -17,6 +17,8 @@
 #include "proto.h"
 #include "log.h"
 #include "buffer.h"
+#include "proto.h"
+#include "syn_ack.h"
 
 #if defined MN_APPLE  || defined MN_ANDROID
 #include <sys/time.h>
@@ -55,11 +57,15 @@ extern "C" {
     uint32_t mn_cal_remain_time(struct timeval begintime, uint32_t timeout);
     
     
+    int mn_recv_framehead(mn_node *node, uint32_t timeout);
+    
+    int mn_recv_message(mn_node *node,int msglen, uint32_t timeout);
+    
     int mn_connect_transaction(mn_node *node, uint32_t timeout);
     
     int mn_send_syn(mn_node *node, uint32_t timeout);
-    
-    int mn_recv_ack(mn_node *node, uint32_t timeout);
+
+    int mn_recv_ack(mn_node *node, mn_ack *ack, uint32_t timeout);
     
     int mn_send_session_req(mn_node *node, uint32_t timeout);
     

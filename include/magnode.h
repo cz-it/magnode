@@ -27,11 +27,11 @@ extern "C" {
     
     typedef struct mn_node_t mn_node;
     
-    typedef enum mn_key_type_t {
-        MN_KEY_NONE,
-        MN_KEY_SALT,
-        MN_KEY_DH,
-    } mn_key_type;
+    typedef enum mn_channel_type_t {
+        MN_CHANNEL_NONE,
+        MN_CHANNEL_SALT,
+        MN_CHANNEL_DH,
+    } mn_channel_type;
     
     typedef enum mn_protobuf_type_t {
         MN_PB_BIN,
@@ -76,7 +76,7 @@ extern "C" {
      * @param crypto : crypto method
      * @return : 0 on success , <0 on error
      */
-    int mn_set_channel(mn_node *node, mn_protobuf_type protobuf, mn_key_type key, mn_crypto_type crypto);
+    int mn_set_channel(mn_node *node, mn_protobuf_type protobuf, mn_channel_type channel, mn_crypto_type crypto);
     
     /**
      * Set Auth infomation

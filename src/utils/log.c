@@ -51,7 +51,7 @@ void mn_print(const char *log)
     __android_log_print(ANDROID_LOG_DEBUG, _TAG, "%s", log);
 #endif
     
-#ifdef MN_IOS
+#if defined MN_IOS || defined MN_MAC
     printf("%s\n",log);
 #endif
 #ifdef MN_MAC

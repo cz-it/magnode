@@ -11,13 +11,13 @@
 #include "log.h"
 #include "proto.h"
 
-int mn_init_syn(mn_syn *syn, uint16_t protobuf, uint16_t key, uint16_t crypto)
+int mn_init_syn(mn_syn *syn, uint16_t protobuf, uint16_t channel, uint16_t crypto)
 {
     if (NULL == syn) {
         return MN_EARG;
     }
     syn->crypto = crypto;
-    syn->key = key;
+    syn->channel = channel;
     syn->protobuf = protobuf;
 
     mn_init_frame_head(&syn->frame_head, MN_CMD_SYN, sizeof(*syn) - sizeof(syn->frame_head));
@@ -41,7 +41,8 @@ int mn_pack_syn(mn_syn *syn, void *buf, int len)
     }
     
     memcpy(buf+rst, syn, sizeof(*syn));
-    return 0;
+    rst +=sizeof(*syn);
+    return rst;
 }
 
 int mn_unpack_syn(mn_syn *syn, const void *buf, int len)
@@ -64,29 +65,7 @@ int mn_unpack_ack(mn_ack *ack, const void *buf, int len)
         return MN_EPACKLEN;
     }
     
-    uint16_t key = *((uint16_t *) buf);
-    switch (key) {
-        case MN_KEY_NONE: {
-            memcpy(&ack->body.ack_none, buf+sizeof(key), sizeof(ack->body.ack_none));
-        }
-            break;
-            
-        case MN_KEY_DH: {
-            memcpy(&ack->body.ack_dh, buf+sizeof(key), sizeof(ack->body.ack_dh));
-        }
-            break;
-            
-        case MN_KEY_SALT: {
-            memcpy(&ack->body.ack_salt, buf+sizeof(key), sizeof(ack->body.ack_salt));
-        }
-            break;
-            
-        default: {
-            LOG_E("Unapck ACK wiht unknown key");
-            return MN_EUNKNOWNACK;
-        }
-            break;
-    }
-    
+    ack->channel = *(uint16_t *)buf;
+    ack->crypto  = *((uint16_t *)buf +1);
     return 0;
 }

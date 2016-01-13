@@ -1,4 +1,4 @@
-//
+ //
 //  magnode_inner.c
 //  magnode
 //
@@ -7,10 +7,54 @@
 //
 
 #include "magnode_inner.h"
-#include "syn_ack.h"
 #include "magnode.h"
-#include "proto.h"
 
+int mn_recv_framehead(mn_node *node, uint32_t timeout)
+{
+    int rst = 0;
+    if (NULL == node ) {
+        return MN_ENULLNODE;
+    }
+    
+    if (node->recvbuf.length >= sizeof(mn_frame_head)) {
+        return 0;
+    }
+    size_t len =sizeof(mn_frame_head) - node->recvbuf.length;
+    rst = mn_net_recv(&node->socket, &node->recvbuf.data, &len, timeout);
+    if (rst<0) {
+        LOG_E("mn_net_recv error!");
+        node->recvbuf.length +=len;
+        return rst;
+    }
+    node->recvbuf.length +=len;
+    return 0;
+}
+
+int mn_recv_message(mn_node *node,int msglen, uint32_t timeout)
+{
+    int rst = 0;
+    if (NULL == node ) {
+        return MN_ENULLNODE;
+    }
+    
+    if (node->recvbuf.length >= sizeof(mn_frame_head) + msglen) {
+        return 0;
+    }
+    int unnecessary =  node->recvbuf.length-sizeof(mn_frame_head);
+    if (unnecessary <0) {
+        return -1;
+    }
+    size_t len =msglen - unnecessary;
+    rst = mn_net_recv(&node->socket, &node->recvbuf.data, &len, timeout);
+    if (rst<0) {
+        LOG_E("mn_net_recv error!");
+        node->recvbuf.length +=len;
+        return rst;
+    }
+    node->recvbuf.length +=len;
+    
+    return 0;
+}
 
 int mn_clear_legacy_sendbuf(mn_node *node)
 {
@@ -94,14 +138,19 @@ int mn_send_syn(mn_node *node, uint32_t timeout)
     }
     
     mn_syn syn;
-    rst = mn_init_syn(&syn, MN_PB_BIN, MN_KEY_NONE, MN_CRYPTO_NONE);
+    rst = mn_init_syn(&syn, MN_PB_BIN, MN_CHANNEL_NONE, MN_CRYPTO_NONE);
     if (rst <0) {
         LOG_E("init syn error with %d", rst);
         return rst;
     }
     
     mn_buffer_reset(&node->packbuf, MN_MAX_PROTO_SIZE);
-    mn_pack_syn(&syn, node->packbuf.data, node->packbuf.length);
+    rst = mn_pack_syn(&syn, node->packbuf.data, node->packbuf.cap);
+    if (rst < 0 ) {
+        LOG_E("pack syn error ");
+        return -1;
+    }
+    node->packbuf.length = rst;
     rst = mn_send_packbuf(node);
     if (rst < 0) {
         LOG_E("send syn error with %d", rst);
@@ -112,16 +161,39 @@ int mn_send_syn(mn_node *node, uint32_t timeout)
 
 
 
-int mn_recv_ack(mn_node *node, uint32_t timeout)
+int mn_recv_ack(mn_node *node, mn_ack *ack, uint32_t timeout)
 {
     int rst =0;
+    uint32_t rt = timeout;
     
     if (NULL == node) {
         return MN_ENULLNODE;
     }
     
-    rst = mn_unpack_legacy_recvbuf(node);
+    struct timeval btime;
+    gettimeofday(&btime, NULL);
+    if ( node->recvbuf.length < sizeof(mn_frame_head)) {
+        rst = mn_recv_framehead(node, timeout);
+        if (rst < 0) {
+            return rst;
+        }
+    }
+    
+    rst = mn_unpack_frame_head(&ack->frame_head, node->recvbuf.data, node->recvbuf.length);
+    if (rst <0) {
+        LOG_E("upack frame head error!");
+        return rst;
+    }
+    rt = mn_cal_remain_time(btime, timeout);
+    rst = mn_recv_message(node, ack->frame_head.length, rt);
     if (rst < 0) {
+        LOG_E("Recv Message Error !");
+        return rst;
+    }
+    
+    rst = mn_unpack_ack(ack, node->recvbuf.data +sizeof(mn_frame_head) , node->recvbuf.length-sizeof(mn_frame_head));
+    if (rst < 0) {
+        LOG_E("Unpack ACK error !");
         return rst;
     }
     
@@ -194,7 +266,8 @@ int mn_connect_transaction(mn_node *node, uint32_t timeout)
     
     // 2. recv ack
     rt = mn_cal_remain_time(btime, timeout);
-    rst = mn_recv_ack(node, rt);
+    mn_ack ack;
+    rst = mn_recv_ack(node, &ack, rt);
     if (rst <0 ) {
         LOG_E("send syn error");
         if (MN_ETIMEOUT == rst ) {
