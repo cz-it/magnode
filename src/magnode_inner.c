@@ -20,7 +20,7 @@ int mn_recv_framehead(mn_node *node, uint32_t timeout)
         return 0;
     }
     size_t len =sizeof(mn_frame_head) - node->recvbuf.length;
-    rst = mn_net_recv(&node->socket, &node->recvbuf.data, &len, timeout);
+    rst = mn_net_recv(&node->socket, node->recvbuf.data, &len, timeout);
     if (rst<0) {
         LOG_E("mn_net_recv error!");
         node->recvbuf.length +=len;
@@ -102,7 +102,7 @@ int mn_send_packbuf(mn_node *node)
     if ((node->sendbuf.cap - node->sendbuf.length)<node->packbuf.length) {
         return MN_EPACKLEN;
     }
-    rst = mn_buffer_append(&node->sendbuf, &node->packbuf);
+    rst = mn_buffer_append_buf(&node->sendbuf, &node->packbuf);
     if (rst <0) {
         return rst;
     }
@@ -145,12 +145,12 @@ int mn_send_syn(mn_node *node, uint32_t timeout)
     }
     
     mn_buffer_reset(&node->packbuf, MN_MAX_PROTO_SIZE);
-    rst = mn_pack_syn(&syn, node->packbuf.data, node->packbuf.cap);
+    rst = mn_pack_syn(&syn, &node->packbuf);
     if (rst < 0 ) {
         LOG_E("pack syn error ");
         return -1;
     }
-    node->packbuf.length = rst;
+    node->packbuf.length += rst;
     rst = mn_send_packbuf(node);
     if (rst < 0) {
         LOG_E("send syn error with %d", rst);
@@ -178,20 +178,20 @@ int mn_recv_ack(mn_node *node, mn_ack *ack, uint32_t timeout)
             return rst;
         }
     }
-    
-    rst = mn_unpack_frame_head(&ack->frame_head, node->recvbuf.data, node->recvbuf.length);
+    mn_frame_head frame_head;
+    rst = mn_unpack_frame_head(&frame_head, &node->recvbuf);
     if (rst <0) {
         LOG_E("upack frame head error!");
         return rst;
     }
     rt = mn_cal_remain_time(btime, timeout);
-    rst = mn_recv_message(node, ack->frame_head.length, rt);
+    rst = mn_recv_message(node, frame_head.length, rt);
     if (rst < 0) {
         LOG_E("Recv Message Error !");
         return rst;
     }
     
-    rst = mn_unpack_ack(ack, node->recvbuf.data +sizeof(mn_frame_head) , node->recvbuf.length-sizeof(mn_frame_head));
+    rst = mn_unpack_ack(ack, &node->recvbuf);
     if (rst < 0) {
         LOG_E("Unpack ACK error !");
         return rst;
@@ -202,19 +202,75 @@ int mn_recv_ack(mn_node *node, mn_ack *ack, uint32_t timeout)
 
 int mn_send_session_req(mn_node *node, uint32_t timeout)
 {
+    int rst = 0;
     if (NULL == node) {
         return MN_ENULLNODE;
     }
     
+    rst = mn_clear_legacy_sendbuf(node);
+    if (rst) {
+        LOG_E("Clear send buffer's legacy error");
+        return rst;
+    }
+    
+    mn_session_req sssreq;
+    rst = mn_init_sssreq(&sssreq);
+    if (rst <0) {
+        LOG_E("init session request error with %d", rst);
+        return rst;
+    }
+    
+    mn_buffer_reset(&node->packbuf, MN_MAX_PROTO_SIZE);
+    rst = mn_pack_sssreq(&sssreq, &node->packbuf);
+    if (rst < 0 ) {
+        LOG_E("pack syn error ");
+        return -1;
+    }
+    node->packbuf.length += rst;
+    rst = mn_send_packbuf(node);
+    if (rst < 0) {
+        LOG_E("send syn error with %d", rst);
+        return rst;
+    }
     return 0;
 }
 
-int mn_recv_session_rsp(mn_node *node, uint32_t timeout)
+int mn_recv_session_rsp(mn_node *node, mn_session_rsp *sssrsp, uint32_t timeout)
 {
+
+    int rst =0;
+    uint32_t rt = timeout;
+    
     if (NULL == node) {
         return MN_ENULLNODE;
     }
     
+    struct timeval btime;
+    gettimeofday(&btime, NULL);
+    if ( node->recvbuf.length < sizeof(mn_frame_head)) {
+        rst = mn_recv_framehead(node, timeout);
+        if (rst < 0) {
+            return rst;
+        }
+    }
+    mn_frame_head frame_head;
+    rst = mn_unpack_frame_head(&frame_head, &node->recvbuf);
+    if (rst <0) {
+        LOG_E("upack frame head error!");
+        return rst;
+    }
+    rt = mn_cal_remain_time(btime, timeout);
+    rst = mn_recv_message(node, frame_head.length, rt);
+    if (rst < 0) {
+        LOG_E("Recv Message Error !");
+        return rst;
+    }
+    
+    rst = mn_unpack_sssrsp(sssrsp, &node->recvbuf);
+    if (rst < 0) {
+        LOG_E("Unpack Session Rsp error !");
+        return rst;
+    }
     return 0;
 }
 
@@ -277,81 +333,67 @@ int mn_connect_transaction(mn_node *node, uint32_t timeout)
         }
     }
     
-    // send connect req
+    // send session req
+    rt = mn_cal_remain_time(btime, timeout);
+    rst = mn_send_session_req(node, rt);
+    if (rst <0 ) {
+        LOG_E("send session request error");
+        if (MN_ETIMEOUT == rst ) {
+            return rst;
+        } else {
+            return MN_ESSSREQ;
+        }
+    }
     
-    // recv connect rsp
+    // recv session rsp
+    rt = mn_cal_remain_time(btime, timeout);
+    mn_session_rsp sssrsp;
+    rst = mn_recv_session_rsp(node, &sssrsp, rt);
+    if (rst <0 ) {
+        LOG_E("recv session response error");
+        if (MN_ETIMEOUT == rst ) {
+            return rst;
+        } else {
+            return MN_ESSSRSP;
+        }
+    }
     
     // send auth
+    rt = mn_cal_remain_time(btime, timeout);
+    rst = mn_send_auth_req(node, rt);
+    if (rst <0 ) {
+        LOG_E("send auth request error");
+        if (MN_ETIMEOUT == rst ) {
+            return rst;
+        } else {
+            return MN_EAUTHREQ;
+        }
+    }
     
     // recv auth
+    rt = mn_cal_remain_time(btime, timeout);
+    rst = mn_recv_auth_rsp(node, rt);
+    if (rst <0 ) {
+        LOG_E("recv auth response error");
+        if (MN_ETIMEOUT == rst ) {
+            return rst;
+        } else {
+            return MN_EAUTHRSP;
+        }
+    }
     
     // recv confirm
-    
-#if 0
-    MN_NODEMSG_HEAD_INIT(&head, MN_CMD_REQ_CONN, 0);
-    headlen = sizeof(mn_nodemsg_head);
-    
-    size_t buflen = sizeof(mn_nodemsg_head);
-    void *buf = malloc(sizeof(mn_nodemsg_head));
-    rst = parse2mem(&head, NULL, 0, buf, &buflen);
-    if (0 != rst) {
-        return -1;
-    }
-    struct timeval sbtime;
-    gettimeofday(&sbtime, NULL);
-    rst = mn_net_send(&node->socket, buf, &headlen, timeout);
-    if (rst != 0 ) {
-        FREE(buf);
-        return -1;
-    }
-    struct timeval setime;
-    gettimeofday(&setime, NULL);
-    long diff = timeval_min_usec(&setime, &sbtime);
-    if (diff < 0 || diff > timeout) {
-        FREE(buf);
-        return MN_ETIMEOUT;
-    }
-    uint64_t rtimeout = timeout-diff;
-    
-    buflen = sizeof(mn_nodemsg_head);
-    memset(buf, 0, buflen);
-    gettimeofday(&sbtime, NULL);
-    rst = mn_net_recv(&node->socket, buf, &buflen, rtimeout);
-    if (rst != 0 ) {
-        if (rst == MN__ETIMEOUT) {
-            FREE(buf);
-            return MN_ETIMEOUT;
+    rt = mn_cal_remain_time(btime, timeout);
+    rst = mn_recv_confirm(node, rt);
+    if (rst <0 ) {
+        LOG_E("recv confirm error");
+        if (MN_ETIMEOUT == rst ) {
+            return rst;
+        } else {
+            return MN_ECONFIRM;
         }
-        FREE(buf);
-        return -1;
-    }
-    gettimeofday(&setime, NULL);
-    diff = timeval_min_usec(&setime, &sbtime);
-    if (diff < 0 || diff > rtimeout) {
-        FREE(buf);
-        return MN_ETIMEOUT;
-    }
-    buflen = 0;
-    rst = parse_from_mem(&head, NULL, &buflen, buf);
-    if (rst != 0 ){
-        FREE(buf);
-        return -1;
     }
     
-    rst = is_invalied_head(&head);
-    if (rst != 0) {
-        FREE(buf);
-        return MN_EHEAD;
-    }
-    if (head.cmd == MN_CMD_RSP_CONN) {
-        FREE(buf);
-        node->agent_id =head.agent_id;
-        return 0;
-    } else {
-        FREE(buf);
-        return MN_ECMD;
-    }
-#endif
-    return -1;
+    return 0;
 }
 

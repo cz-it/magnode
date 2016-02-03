@@ -31,6 +31,8 @@ enum MN_CMD {
     MN_CMD_SYN      = 0x0001,
     MN_CMD_ACK      = 0x0002,
 
+    MN_CMD_SSSREQ   = 0x0003,
+    MN_CMD_SSSRSP   = 0x0004,
 };
 
 typedef struct mn_nodemsg_head_t {

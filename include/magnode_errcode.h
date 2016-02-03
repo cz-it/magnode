@@ -34,6 +34,11 @@ extern  "C" {
         MN_EPACKLEN     = -(MN_ERRNO_BASE + 16),
         MN_EUNKNOWNACK  = -(MN_ERRNO_BASE + 17),
         MN_EBUFLEN      = -(MN_ERRNO_BASE + 18),
+        MN_ESSSREQ      = -(MN_ERRNO_BASE + 19),
+        MN_ESSSRSP      = -(MN_ERRNO_BASE + 20),
+        MN_EAUTHREQ     = -(MN_ERRNO_BASE + 21),
+        MN_EAUTHRSP     = -(MN_ERRNO_BASE + 22),
+        MN_ECONFIRM     = -(MN_ERRNO_BASE + 23),
     };
     
 #ifdef __cplusplus

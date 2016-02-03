@@ -19,6 +19,7 @@
 #include "buffer.h"
 #include "proto.h"
 #include "syn_ack.h"
+#include "session.h"
 
 #if defined MN_APPLE  || defined MN_ANDROID
 #include <sys/time.h>
@@ -69,7 +70,7 @@ extern "C" {
     
     int mn_send_session_req(mn_node *node, uint32_t timeout);
     
-    int mn_recv_session_rsp(mn_node *node, uint32_t timeout);
+    int mn_recv_session_rsp(mn_node *node, mn_session_rsp *sssrsp, uint32_t timeout);
     
     int mn_send_auth_req(mn_node *node, uint32_t timeout);
     

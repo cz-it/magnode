@@ -20,52 +20,70 @@ int mn_init_syn(mn_syn *syn, uint16_t protobuf, uint16_t channel, uint16_t crypt
     syn->channel = channel;
     syn->protobuf = protobuf;
 
-    mn_init_frame_head(&syn->frame_head, MN_CMD_SYN, sizeof(*syn) - sizeof(syn->frame_head));
     return 0;
 }
 
-int mn_pack_syn(mn_syn *syn, void *buf, int len)
+int mn_pack_syn(mn_syn *syn, mn_buffer *buf)
 {
     int rst = 0;
     if (NULL == syn || NULL == buf) {
         return MN_EARG;
     }
     
-    if (len < sizeof(*syn)) {
+    if ((buf->cap - buf->length) < sizeof(*syn)) {
         return MN_EPACKLEN;
     }
-    
-    rst = mn_pack_frame_head(&syn->frame_head, buf, len);
+    mn_frame_head frame_head;
+    mn_init_frame_head(&frame_head, MN_CMD_SYN, sizeof(*syn));
+    rst = mn_pack_frame_head(&frame_head, buf);
     if (rst < 0) {
         return rst;
     }
-    
-    memcpy(buf+rst, syn, sizeof(*syn));
-    rst +=sizeof(*syn);
+
+    rst = mn_buffer_append(buf, &syn->protobuf, sizeof(syn->protobuf));
+    if (rst < 0) {
+        return rst;
+    }
+    rst = mn_buffer_append(buf, &syn->channel, sizeof(syn->channel));
+    if (rst < 0) {
+        return rst;
+    }
+    rst = mn_buffer_append(buf, &syn->crypto, sizeof(syn->crypto));
+    if (rst < 0) {
+        return rst;
+    }
+
     return rst;
 }
 
-int mn_unpack_syn(mn_syn *syn, const void *buf, int len)
+int mn_unpack_syn(mn_syn *syn, mn_buffer *buf)
 {
     return 0;
 }
 
-int mn_pack_ack(mn_ack *ack, void *buf, int len)
+int mn_pack_ack(mn_ack *ack, mn_buffer *buf)
 {
     return 0;
 }
 
-int mn_unpack_ack(mn_ack *ack, const void *buf, int len)
+int mn_unpack_ack(mn_ack *ack, mn_buffer *buf)
 {
+    int rst = 0;
     if (NULL == ack || NULL == buf) {
         return MN_EARG;
     }
     
-    if (len < sizeof(uint16_t)) {
+    if (buf->length < sizeof(uint16_t)) {
         return MN_EPACKLEN;
     }
     
-    ack->channel = *(uint16_t *)buf;
-    ack->crypto  = *((uint16_t *)buf +1);
-    return 0;
+    rst = mn_buffer_uint16(buf, &ack->channel);
+    if (rst < 0) {
+        return rst;
+    }
+    rst = mn_buffer_uint16(buf, &ack->crypto);
+    if (rst < 0) {
+        return rst;
+    }
+    return rst;
 }

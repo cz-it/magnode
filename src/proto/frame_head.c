@@ -32,31 +32,33 @@ uint32_t tick_seq()
 }
 
 
-int mn_pack_frame_head(mn_frame_head *head, void *buf, int len)
+int mn_pack_frame_head(mn_frame_head *head, mn_buffer *buf)
 {
+    int rst = 0;
     if (NULL == head || NULL == buf) {
         return MN_EARG;
     }
     
-    if (len < sizeof(*head)) {
+    if ((buf->cap-buf->length) < sizeof(*head)) {
         return MN_EPACKLEN;
     }
-    
-    memcpy(buf, head, sizeof(*head));
-    
-    return sizeof(*head);
+
+    rst = mn_buffer_append(buf, head, sizeof(*head));
+
+    return rst;
 }
 
-int mn_unpack_frame_head(mn_frame_head *head, const void *buf, int len)
+int mn_unpack_frame_head(mn_frame_head *head, mn_buffer * buf)
 {
+    int rst = 0;
     if (NULL == head || NULL == buf) {
         return MN_EARG;
     }
     
-    if (len < sizeof(*head)) {
+    if (buf->length < sizeof(*head)) {
         return MN_EPACKLEN;
     }
     
-    memcpy(head, buf, sizeof(*head));
-    return 0;
+    rst = mn_buffer_void(buf, head, sizeof(*head));
+    return rst;
 }
