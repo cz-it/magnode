@@ -20,7 +20,7 @@ int mn_recv_framehead(mn_node *node, uint32_t timeout)
         return 0;
     }
     size_t len =sizeof(mn_frame_head) - node->recvbuf.length;
-    rst = mn_net_recv(&node->socket, node->recvbuf.data, &len, timeout);
+    rst = mn_net_recv(&node->socket, node->recvbuf.data+node->recvbuf.length, &len, timeout);
     if (rst<0) {
         LOG_E("mn_net_recv error!");
         node->recvbuf.length +=len;
@@ -37,22 +37,18 @@ int mn_recv_message(mn_node *node,int msglen, uint32_t timeout)
         return MN_ENULLNODE;
     }
     
-    if (node->recvbuf.length >= sizeof(mn_frame_head) + msglen) {
+    if (node->recvbuf.length >=  msglen) {
         return 0;
     }
-    int unnecessary =  node->recvbuf.length-sizeof(mn_frame_head);
-    if (unnecessary <0) {
-        return -1;
-    }
+    int unnecessary =  node->recvbuf.length;
     size_t len =msglen - unnecessary;
-    rst = mn_net_recv(&node->socket, &node->recvbuf.data, &len, timeout);
+    rst = mn_net_recv(&node->socket, node->recvbuf.data + node->recvbuf.length, &len, timeout);
     if (rst<0) {
         LOG_E("mn_net_recv error!");
         node->recvbuf.length +=len;
         return rst;
     }
-    node->recvbuf.length +=len;
-    
+    node->recvbuf.length +=len;    
     return 0;
 }
 
@@ -150,7 +146,6 @@ int mn_send_syn(mn_node *node, uint32_t timeout)
         LOG_E("pack syn error ");
         return -1;
     }
-    node->packbuf.length += rst;
     rst = mn_send_packbuf(node);
     if (rst < 0) {
         LOG_E("send syn error with %d", rst);
@@ -226,7 +221,6 @@ int mn_send_session_req(mn_node *node, uint32_t timeout)
         LOG_E("pack syn error ");
         return -1;
     }
-    node->packbuf.length += rst;
     rst = mn_send_packbuf(node);
     if (rst < 0) {
         LOG_E("send syn error with %d", rst);

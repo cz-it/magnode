@@ -92,6 +92,11 @@ int mn_buffer_align(mn_buffer *buffer, int index)
     if (0 == index) {
         return 0;
     }
+
+    if (index > buffer->length) {
+        return MN_EBUFLEN;
+    }
+    
     memmove(buffer->data, buffer->data+index, buffer->length-index);
     buffer->length = buffer->length - index;
     return 0;
@@ -99,20 +104,60 @@ int mn_buffer_align(mn_buffer *buffer, int index)
 
 int mn_buffer_uint16(mn_buffer *buffer, uint16_t *dest)
 {
+    if (NULL == buffer || NULL==dest) {
+        return MN_EARG;
+    }
+    
+    if (buffer->length < sizeof(*dest)) {
+        return MN_EBUFLEN;
+    }
+    
+    *dest = * ((uint16_t *) buffer->data);
+    mn_buffer_align(buffer, sizeof(*dest));
     return 0;
 }
 
 int mn_buffer_uint32(mn_buffer *buffer, uint32_t *dest)
 {
+    if (NULL == buffer || NULL==dest) {
+        return MN_EARG;
+    }
+    
+    if (buffer->length < sizeof(*dest)) {
+        return MN_EBUFLEN;
+    }
+    
+    *dest = * ((uint32_t *) buffer->data);
+    mn_buffer_align(buffer, sizeof(*dest));
     return 0;
 }
 
 int mn_buffer_void(mn_buffer *buffer, void *dest, int len)
 {
+    if (NULL == buffer || NULL==dest) {
+        return MN_EARG;
+    }
+    
+    if (buffer->length < len) {
+        return MN_EBUFLEN;
+    }
+    
+    memcpy(dest, buffer->data, len);
+    mn_buffer_align(buffer, len);
     return 0;
 }
 
 int mn_buffer_append(mn_buffer *dest, const void *src, const int len)
 {
+    if (NULL == dest || NULL==src) {
+        return MN_EARG;
+    }
+    
+    if ((dest->cap - dest->length) < len) {
+        return MN_EBUFLEN;
+    }
+    
+    memcpy(dest->data+dest->length, src, len);
+    dest->length += len;    
     return 0;
 }

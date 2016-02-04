@@ -40,6 +40,7 @@ ssize_t	socket_recv(int fd, void *buf, size_t len, int flag)
     } else if (rst <0 &&(errno==EINTR || errno==EAGAIN || errno==EWOULDBLOCK)) {
         return 0;
     } else {
+        printf("errno is %d", errno);
         return rst;
     }
     return  rst;
@@ -173,7 +174,7 @@ int mn_socket_recv(struct mn_socket *fd, void *buf, size_t *len, int flags, uint
         } else {
             // other errors
             *len = (*len) - task;
-            return MN__ESEND;
+            return MN__ERECV;
         }
     }
     return 0;
