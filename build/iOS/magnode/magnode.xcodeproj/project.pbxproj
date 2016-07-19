@@ -7,13 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2134D4671D3E93B500B12629 /* confirm.c in Sources */ = {isa = PBXBuildFile; fileRef = F04298AA1C326F81001D5637 /* confirm.c */; };
+		2134D4681D3E93B500B12629 /* log.c in Sources */ = {isa = PBXBuildFile; fileRef = F0DBD51F1BFAD87C00C2EC20 /* log.c */; };
+		2134D4691D3E93B500B12629 /* message.c in Sources */ = {isa = PBXBuildFile; fileRef = F042989E1C326F2C001D5637 /* message.c */; };
+		2134D46A1D3E93B500B12629 /* syn_ack.c in Sources */ = {isa = PBXBuildFile; fileRef = F04298A41C326F66001D5637 /* syn_ack.c */; };
+		2134D46B1D3E93B500B12629 /* frame_head.c in Sources */ = {isa = PBXBuildFile; fileRef = F04298AD1C32810B001D5637 /* frame_head.c */; };
+		2134D46C1D3E93B500B12629 /* proto.c in Sources */ = {isa = PBXBuildFile; fileRef = F0DBD51C1BFAD87C00C2EC20 /* proto.c */; };
+		2134D46D1D3E93B500B12629 /* magnode_uinty.c in Sources */ = {isa = PBXBuildFile; fileRef = F0DBD5671BFB60C100C2EC20 /* magnode_uinty.c */; };
+		2134D46E1D3E93B500B12629 /* buffer.c in Sources */ = {isa = PBXBuildFile; fileRef = F0B0FC911C33DE1700A3DED6 /* buffer.c */; };
+		2134D46F1D3E93B500B12629 /* session.c in Sources */ = {isa = PBXBuildFile; fileRef = F04298A11C326F52001D5637 /* session.c */; };
+		2134D4701D3E93B500B12629 /* poll.c in Sources */ = {isa = PBXBuildFile; fileRef = F0DBD5111BFAD87C00C2EC20 /* poll.c */; };
+		2134D4711D3E93B500B12629 /* os.c in Sources */ = {isa = PBXBuildFile; fileRef = F0DBD5211BFAD87C00C2EC20 /* os.c */; };
+		2134D4721D3E93B500B12629 /* sys.c in Sources */ = {isa = PBXBuildFile; fileRef = F0B0FC941C34128600A3DED6 /* sys.c */; };
+		2134D4741D3E93B500B12629 /* magnode.m in Sources */ = {isa = PBXBuildFile; fileRef = 216CC3781B52A5D800EFD63A /* magnode.m */; };
+		2134D4751D3E93B500B12629 /* socket_tcp.c in Sources */ = {isa = PBXBuildFile; fileRef = F0DBD5151BFAD87C00C2EC20 /* socket_tcp.c */; };
+		2134D4761D3E93B500B12629 /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = F0DBD5191BFAD87C00C2EC20 /* utils.c */; };
+		2134D4771D3E93B500B12629 /* socket.c in Sources */ = {isa = PBXBuildFile; fileRef = F0DBD5131BFAD87C00C2EC20 /* socket.c */; };
+		2134D4781D3E93B500B12629 /* net.c in Sources */ = {isa = PBXBuildFile; fileRef = F0DBD50F1BFAD87C00C2EC20 /* net.c */; };
+		2134D4791D3E93B500B12629 /* magnode.c in Sources */ = {isa = PBXBuildFile; fileRef = F0DBD50B1BFAD87C00C2EC20 /* magnode.c */; };
+		2134D47A1D3E93B500B12629 /* socket_udp.c in Sources */ = {isa = PBXBuildFile; fileRef = F0DBD5171BFAD87C00C2EC20 /* socket_udp.c */; };
+		2134D47B1D3E93B500B12629 /* magnode_inner.c in Sources */ = {isa = PBXBuildFile; fileRef = F04298E51C32BCF7001D5637 /* magnode_inner.c */; };
+		2134D47C1D3E93B500B12629 /* magnode_errcode.c in Sources */ = {isa = PBXBuildFile; fileRef = F0DBD50C1BFAD87C00C2EC20 /* magnode_errcode.c */; };
+		2134D47F1D3E93B500B12629 /* magnode.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216CC3761B52A5D800EFD63A /* magnode.h */; };
 		216CC3771B52A5D800EFD63A /* magnode.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216CC3761B52A5D800EFD63A /* magnode.h */; };
 		216CC3791B52A5D800EFD63A /* magnode.m in Sources */ = {isa = PBXBuildFile; fileRef = 216CC3781B52A5D800EFD63A /* magnode.m */; };
 		216CC37F1B52A5D800EFD63A /* libmagnode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 216CC3731B52A5D800EFD63A /* libmagnode.a */; };
 		F04298A01C326F2C001D5637 /* message.c in Sources */ = {isa = PBXBuildFile; fileRef = F042989E1C326F2C001D5637 /* message.c */; };
 		F04298A31C326F52001D5637 /* session.c in Sources */ = {isa = PBXBuildFile; fileRef = F04298A11C326F52001D5637 /* session.c */; };
 		F04298A61C326F66001D5637 /* syn_ack.c in Sources */ = {isa = PBXBuildFile; fileRef = F04298A41C326F66001D5637 /* syn_ack.c */; };
-		F04298A91C326F72001D5637 /* auth.c in Sources */ = {isa = PBXBuildFile; fileRef = F04298A71C326F72001D5637 /* auth.c */; };
 		F04298AC1C326F81001D5637 /* confirm.c in Sources */ = {isa = PBXBuildFile; fileRef = F04298AA1C326F81001D5637 /* confirm.c */; };
 		F04298AF1C32810B001D5637 /* frame_head.c in Sources */ = {isa = PBXBuildFile; fileRef = F04298AD1C32810B001D5637 /* frame_head.c */; };
 		F04298E61C32BCF7001D5637 /* magnode_inner.c in Sources */ = {isa = PBXBuildFile; fileRef = F04298E51C32BCF7001D5637 /* magnode_inner.c */; };
@@ -44,6 +65,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		2134D47E1D3E93B500B12629 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				2134D47F1D3E93B500B12629 /* magnode.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		216CC3711B52A5D800EFD63A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -57,6 +88,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2134D4831D3E93B500B12629 /* libmagnode_mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libmagnode_mac.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		216CC3731B52A5D800EFD63A /* libmagnode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libmagnode.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		216CC3761B52A5D800EFD63A /* magnode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = magnode.h; sourceTree = "<group>"; };
 		216CC3781B52A5D800EFD63A /* magnode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = magnode.m; sourceTree = "<group>"; };
@@ -68,8 +100,6 @@
 		F04298A21C326F52001D5637 /* session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = session.h; sourceTree = "<group>"; };
 		F04298A41C326F66001D5637 /* syn_ack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = syn_ack.c; sourceTree = "<group>"; };
 		F04298A51C326F66001D5637 /* syn_ack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = syn_ack.h; sourceTree = "<group>"; };
-		F04298A71C326F72001D5637 /* auth.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = auth.c; sourceTree = "<group>"; };
-		F04298A81C326F72001D5637 /* auth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = auth.h; sourceTree = "<group>"; };
 		F04298AA1C326F81001D5637 /* confirm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = confirm.c; sourceTree = "<group>"; };
 		F04298AB1C326F81001D5637 /* confirm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = confirm.h; sourceTree = "<group>"; };
 		F04298AD1C32810B001D5637 /* frame_head.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = frame_head.c; sourceTree = "<group>"; };
@@ -107,6 +137,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2134D47D1D3E93B500B12629 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		216CC3701B52A5D800EFD63A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -141,6 +178,7 @@
 			children = (
 				216CC3731B52A5D800EFD63A /* libmagnode.a */,
 				216CC37E1B52A5D800EFD63A /* magnodeTests.xctest */,
+				2134D4831D3E93B500B12629 /* libmagnode_mac.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -227,8 +265,6 @@
 				F04298A21C326F52001D5637 /* session.h */,
 				F04298A41C326F66001D5637 /* syn_ack.c */,
 				F04298A51C326F66001D5637 /* syn_ack.h */,
-				F04298A71C326F72001D5637 /* auth.c */,
-				F04298A81C326F72001D5637 /* auth.h */,
 				F04298AA1C326F81001D5637 /* confirm.c */,
 				F04298AB1C326F81001D5637 /* confirm.h */,
 				F04298AD1C32810B001D5637 /* frame_head.c */,
@@ -255,6 +291,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2134D4651D3E93B500B12629 /* magnode_mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2134D4801D3E93B500B12629 /* Build configuration list for PBXNativeTarget "magnode_mac" */;
+			buildPhases = (
+				2134D4661D3E93B500B12629 /* Sources */,
+				2134D47D1D3E93B500B12629 /* Frameworks */,
+				2134D47E1D3E93B500B12629 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = magnode_mac;
+			productName = magnode;
+			productReference = 2134D4831D3E93B500B12629 /* libmagnode_mac.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		216CC3721B52A5D800EFD63A /* magnode */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 216CC3871B52A5D800EFD63A /* Build configuration list for PBXNativeTarget "magnode" */;
@@ -321,6 +374,7 @@
 			targets = (
 				216CC3721B52A5D800EFD63A /* magnode */,
 				216CC37D1B52A5D800EFD63A /* magnodeTests */,
+				2134D4651D3E93B500B12629 /* magnode_mac */,
 			);
 		};
 /* End PBXProject section */
@@ -336,6 +390,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2134D4661D3E93B500B12629 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2134D4671D3E93B500B12629 /* confirm.c in Sources */,
+				2134D4681D3E93B500B12629 /* log.c in Sources */,
+				2134D4691D3E93B500B12629 /* message.c in Sources */,
+				2134D46A1D3E93B500B12629 /* syn_ack.c in Sources */,
+				2134D46B1D3E93B500B12629 /* frame_head.c in Sources */,
+				2134D46C1D3E93B500B12629 /* proto.c in Sources */,
+				2134D46D1D3E93B500B12629 /* magnode_uinty.c in Sources */,
+				2134D46E1D3E93B500B12629 /* buffer.c in Sources */,
+				2134D46F1D3E93B500B12629 /* session.c in Sources */,
+				2134D4701D3E93B500B12629 /* poll.c in Sources */,
+				2134D4711D3E93B500B12629 /* os.c in Sources */,
+				2134D4721D3E93B500B12629 /* sys.c in Sources */,
+				2134D4741D3E93B500B12629 /* magnode.m in Sources */,
+				2134D4751D3E93B500B12629 /* socket_tcp.c in Sources */,
+				2134D4761D3E93B500B12629 /* utils.c in Sources */,
+				2134D4771D3E93B500B12629 /* socket.c in Sources */,
+				2134D4781D3E93B500B12629 /* net.c in Sources */,
+				2134D4791D3E93B500B12629 /* magnode.c in Sources */,
+				2134D47A1D3E93B500B12629 /* socket_udp.c in Sources */,
+				2134D47B1D3E93B500B12629 /* magnode_inner.c in Sources */,
+				2134D47C1D3E93B500B12629 /* magnode_errcode.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		216CC36F1B52A5D800EFD63A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -352,7 +434,6 @@
 				F0DBD5261BFAD87C00C2EC20 /* poll.c in Sources */,
 				F0DBD52D1BFAD87C00C2EC20 /* os.c in Sources */,
 				F0B0FC961C34128600A3DED6 /* sys.c in Sources */,
-				F04298A91C326F72001D5637 /* auth.c in Sources */,
 				216CC3791B52A5D800EFD63A /* magnode.m in Sources */,
 				F0DBD5281BFAD87C00C2EC20 /* socket_tcp.c in Sources */,
 				F0DBD52A1BFAD87C00C2EC20 /* utils.c in Sources */,
@@ -383,6 +464,29 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		2134D4811D3E93B500B12629 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_INPUT_FILETYPE = automatic;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.11;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		2134D4821D3E93B500B12629 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_INPUT_FILETYPE = automatic;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.11;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		216CC3851B52A5D800EFD63A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -520,6 +624,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2134D4801D3E93B500B12629 /* Build configuration list for PBXNativeTarget "magnode_mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2134D4811D3E93B500B12629 /* Debug */,
+				2134D4821D3E93B500B12629 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		216CC36E1B52A5D800EFD63A /* Build configuration list for PBXProject "magnode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

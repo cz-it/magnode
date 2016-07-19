@@ -7,30 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		218E0E7A1D3E8D9800F2E188 /* libmagnode_mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 218E0E791D3E8D7F00F2E188 /* libmagnode_mac.a */; };
 		F0FD99861C4520EC00A98322 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FD99851C4520EC00A98322 /* main.m */; };
-		F0FD9A2D1C4670B200A98322 /* magnode.c in Sources */ = {isa = PBXBuildFile; fileRef = F0FD99FF1C4670B200A98322 /* magnode.c */; };
-		F0FD9A2E1C4670B200A98322 /* magnode_errcode.c in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9A001C4670B200A98322 /* magnode_errcode.c */; };
-		F0FD9A2F1C4670B200A98322 /* magnode_inner.c in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9A011C4670B200A98322 /* magnode_inner.c */; };
-		F0FD9A301C4670B200A98322 /* magnode_uinty.c in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9A031C4670B200A98322 /* magnode_uinty.c */; };
-		F0FD9A311C4670B200A98322 /* net.c in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9A071C4670B200A98322 /* net.c */; };
-		F0FD9A321C4670B200A98322 /* poll.c in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9A091C4670B200A98322 /* poll.c */; };
-		F0FD9A331C4670B200A98322 /* socket.c in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9A0B1C4670B200A98322 /* socket.c */; };
-		F0FD9A341C4670B200A98322 /* socket_tcp.c in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9A0D1C4670B200A98322 /* socket_tcp.c */; };
-		F0FD9A351C4670B200A98322 /* socket_udp.c in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9A0F1C4670B200A98322 /* socket_udp.c */; };
-		F0FD9A361C4670B200A98322 /* sys.c in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9A111C4670B200A98322 /* sys.c */; };
-		F0FD9A371C4670B200A98322 /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9A131C4670B200A98322 /* utils.c */; };
-		F0FD9A381C4670B200A98322 /* auth.c in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9A161C4670B200A98322 /* auth.c */; };
-		F0FD9A391C4670B200A98322 /* confirm.c in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9A181C4670B200A98322 /* confirm.c */; };
-		F0FD9A3A1C4670B200A98322 /* frame_head.c in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9A1A1C4670B200A98322 /* frame_head.c */; };
-		F0FD9A3B1C4670B200A98322 /* message.c in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9A1C1C4670B200A98322 /* message.c */; };
-		F0FD9A3C1C4670B200A98322 /* proto.c in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9A1E1C4670B200A98322 /* proto.c */; };
-		F0FD9A3D1C4670B200A98322 /* session.c in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9A201C4670B200A98322 /* session.c */; };
-		F0FD9A3E1C4670B200A98322 /* syn_ack.c in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9A221C4670B200A98322 /* syn_ack.c */; };
-		F0FD9A3F1C4670B200A98322 /* buffer.c in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9A251C4670B200A98322 /* buffer.c */; };
-		F0FD9A401C4670B200A98322 /* log.c in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9A271C4670B200A98322 /* log.c */; };
-		F0FD9A411C4670B200A98322 /* os.c in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9A291C4670B200A98322 /* os.c */; };
-		F0FD9A421C4670B200A98322 /* sys.c in Sources */ = {isa = PBXBuildFile; fileRef = F0FD9A2B1C4670B200A98322 /* sys.c */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		218E0E741D3E8D7F00F2E188 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 218E0E6E1D3E8D7F00F2E188 /* magnode.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 216CC3731B52A5D800EFD63A;
+			remoteInfo = magnode;
+		};
+		218E0E761D3E8D7F00F2E188 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 218E0E6E1D3E8D7F00F2E188 /* magnode.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 216CC37E1B52A5D800EFD63A;
+			remoteInfo = magnodeTests;
+		};
+		218E0E781D3E8D7F00F2E188 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 218E0E6E1D3E8D7F00F2E188 /* magnode.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 218E0E6A1D3E8CF500F2E188;
+			remoteInfo = magnode_mac;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		F0FD99801C4520EC00A98322 /* CopyFiles */ = {
@@ -45,53 +48,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		218E0E6E1D3E8D7F00F2E188 /* magnode.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = magnode.xcodeproj; path = ../../../build/iOS/magnode/magnode.xcodeproj; sourceTree = "<group>"; };
 		F0FD99821C4520EC00A98322 /* test_magnode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test_magnode; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0FD99851C4520EC00A98322 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F0FD99FC1C4670B200A98322 /* magnode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = magnode.h; sourceTree = "<group>"; };
-		F0FD99FD1C4670B200A98322 /* magnode_errcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = magnode_errcode.h; sourceTree = "<group>"; };
-		F0FD99FF1C4670B200A98322 /* magnode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = magnode.c; sourceTree = "<group>"; };
-		F0FD9A001C4670B200A98322 /* magnode_errcode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = magnode_errcode.c; sourceTree = "<group>"; };
-		F0FD9A011C4670B200A98322 /* magnode_inner.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = magnode_inner.c; sourceTree = "<group>"; };
-		F0FD9A021C4670B200A98322 /* magnode_inner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = magnode_inner.h; sourceTree = "<group>"; };
-		F0FD9A031C4670B200A98322 /* magnode_uinty.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = magnode_uinty.c; sourceTree = "<group>"; };
-		F0FD9A041C4670B200A98322 /* magnode_uinty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = magnode_uinty.h; sourceTree = "<group>"; };
-		F0FD9A061C4670B200A98322 /* conv.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = conv.sh; sourceTree = "<group>"; };
-		F0FD9A071C4670B200A98322 /* net.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = net.c; sourceTree = "<group>"; };
-		F0FD9A081C4670B200A98322 /* net.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = net.h; sourceTree = "<group>"; };
-		F0FD9A091C4670B200A98322 /* poll.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = poll.c; sourceTree = "<group>"; };
-		F0FD9A0A1C4670B200A98322 /* poll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poll.h; sourceTree = "<group>"; };
-		F0FD9A0B1C4670B200A98322 /* socket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = socket.c; sourceTree = "<group>"; };
-		F0FD9A0C1C4670B200A98322 /* socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socket.h; sourceTree = "<group>"; };
-		F0FD9A0D1C4670B200A98322 /* socket_tcp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = socket_tcp.c; sourceTree = "<group>"; };
-		F0FD9A0E1C4670B200A98322 /* socket_tcp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socket_tcp.h; sourceTree = "<group>"; };
-		F0FD9A0F1C4670B200A98322 /* socket_udp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = socket_udp.c; sourceTree = "<group>"; };
-		F0FD9A101C4670B200A98322 /* socket_udp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socket_udp.h; sourceTree = "<group>"; };
-		F0FD9A111C4670B200A98322 /* sys.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sys.c; sourceTree = "<group>"; };
-		F0FD9A121C4670B200A98322 /* sys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sys.h; sourceTree = "<group>"; };
-		F0FD9A131C4670B200A98322 /* utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = utils.c; sourceTree = "<group>"; };
-		F0FD9A141C4670B200A98322 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
-		F0FD9A161C4670B200A98322 /* auth.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = auth.c; sourceTree = "<group>"; };
-		F0FD9A171C4670B200A98322 /* auth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = auth.h; sourceTree = "<group>"; };
-		F0FD9A181C4670B200A98322 /* confirm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = confirm.c; sourceTree = "<group>"; };
-		F0FD9A191C4670B200A98322 /* confirm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = confirm.h; sourceTree = "<group>"; };
-		F0FD9A1A1C4670B200A98322 /* frame_head.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = frame_head.c; sourceTree = "<group>"; };
-		F0FD9A1B1C4670B200A98322 /* frame_head.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = frame_head.h; sourceTree = "<group>"; };
-		F0FD9A1C1C4670B200A98322 /* message.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = message.c; sourceTree = "<group>"; };
-		F0FD9A1D1C4670B200A98322 /* message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = message.h; sourceTree = "<group>"; };
-		F0FD9A1E1C4670B200A98322 /* proto.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = proto.c; sourceTree = "<group>"; };
-		F0FD9A1F1C4670B200A98322 /* proto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = proto.h; sourceTree = "<group>"; };
-		F0FD9A201C4670B200A98322 /* session.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = session.c; sourceTree = "<group>"; };
-		F0FD9A211C4670B200A98322 /* session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = session.h; sourceTree = "<group>"; };
-		F0FD9A221C4670B200A98322 /* syn_ack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = syn_ack.c; sourceTree = "<group>"; };
-		F0FD9A231C4670B200A98322 /* syn_ack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = syn_ack.h; sourceTree = "<group>"; };
-		F0FD9A251C4670B200A98322 /* buffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = buffer.c; sourceTree = "<group>"; };
-		F0FD9A261C4670B200A98322 /* buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffer.h; sourceTree = "<group>"; };
-		F0FD9A271C4670B200A98322 /* log.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = log.c; sourceTree = "<group>"; };
-		F0FD9A281C4670B200A98322 /* log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = log.h; sourceTree = "<group>"; };
-		F0FD9A291C4670B200A98322 /* os.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = os.c; sourceTree = "<group>"; };
-		F0FD9A2A1C4670B200A98322 /* os.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os.h; sourceTree = "<group>"; };
-		F0FD9A2B1C4670B200A98322 /* sys.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sys.c; sourceTree = "<group>"; };
-		F0FD9A2C1C4670B200A98322 /* sys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sys.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,17 +58,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				218E0E7A1D3E8D9800F2E188 /* libmagnode_mac.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		218E0E6F1D3E8D7F00F2E188 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				218E0E751D3E8D7F00F2E188 /* libmagnode.a */,
+				218E0E771D3E8D7F00F2E188 /* magnodeTests.xctest */,
+				218E0E791D3E8D7F00F2E188 /* libmagnode_mac.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		F0FD99791C4520EC00A98322 = {
 			isa = PBXGroup;
 			children = (
-				F0FD99FB1C4670B200A98322 /* include */,
-				F0FD99FE1C4670B200A98322 /* src */,
+				218E0E6E1D3E8D7F00F2E188 /* magnode.xcodeproj */,
 				F0FD99841C4520EC00A98322 /* test_magnode */,
 				F0FD99831C4520EC00A98322 /* Products */,
 			);
@@ -129,91 +98,6 @@
 				F0FD99851C4520EC00A98322 /* main.m */,
 			);
 			path = test_magnode;
-			sourceTree = "<group>";
-		};
-		F0FD99FB1C4670B200A98322 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				F0FD99FC1C4670B200A98322 /* magnode.h */,
-				F0FD99FD1C4670B200A98322 /* magnode_errcode.h */,
-			);
-			name = include;
-			path = ../../../include;
-			sourceTree = "<group>";
-		};
-		F0FD99FE1C4670B200A98322 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				F0FD99FF1C4670B200A98322 /* magnode.c */,
-				F0FD9A001C4670B200A98322 /* magnode_errcode.c */,
-				F0FD9A011C4670B200A98322 /* magnode_inner.c */,
-				F0FD9A021C4670B200A98322 /* magnode_inner.h */,
-				F0FD9A031C4670B200A98322 /* magnode_uinty.c */,
-				F0FD9A041C4670B200A98322 /* magnode_uinty.h */,
-				F0FD9A051C4670B200A98322 /* net */,
-				F0FD9A151C4670B200A98322 /* proto */,
-				F0FD9A241C4670B200A98322 /* utils */,
-			);
-			name = src;
-			path = ../../../src;
-			sourceTree = "<group>";
-		};
-		F0FD9A051C4670B200A98322 /* net */ = {
-			isa = PBXGroup;
-			children = (
-				F0FD9A061C4670B200A98322 /* conv.sh */,
-				F0FD9A071C4670B200A98322 /* net.c */,
-				F0FD9A081C4670B200A98322 /* net.h */,
-				F0FD9A091C4670B200A98322 /* poll.c */,
-				F0FD9A0A1C4670B200A98322 /* poll.h */,
-				F0FD9A0B1C4670B200A98322 /* socket.c */,
-				F0FD9A0C1C4670B200A98322 /* socket.h */,
-				F0FD9A0D1C4670B200A98322 /* socket_tcp.c */,
-				F0FD9A0E1C4670B200A98322 /* socket_tcp.h */,
-				F0FD9A0F1C4670B200A98322 /* socket_udp.c */,
-				F0FD9A101C4670B200A98322 /* socket_udp.h */,
-				F0FD9A111C4670B200A98322 /* sys.c */,
-				F0FD9A121C4670B200A98322 /* sys.h */,
-				F0FD9A131C4670B200A98322 /* utils.c */,
-				F0FD9A141C4670B200A98322 /* utils.h */,
-			);
-			path = net;
-			sourceTree = "<group>";
-		};
-		F0FD9A151C4670B200A98322 /* proto */ = {
-			isa = PBXGroup;
-			children = (
-				F0FD9A161C4670B200A98322 /* auth.c */,
-				F0FD9A171C4670B200A98322 /* auth.h */,
-				F0FD9A181C4670B200A98322 /* confirm.c */,
-				F0FD9A191C4670B200A98322 /* confirm.h */,
-				F0FD9A1A1C4670B200A98322 /* frame_head.c */,
-				F0FD9A1B1C4670B200A98322 /* frame_head.h */,
-				F0FD9A1C1C4670B200A98322 /* message.c */,
-				F0FD9A1D1C4670B200A98322 /* message.h */,
-				F0FD9A1E1C4670B200A98322 /* proto.c */,
-				F0FD9A1F1C4670B200A98322 /* proto.h */,
-				F0FD9A201C4670B200A98322 /* session.c */,
-				F0FD9A211C4670B200A98322 /* session.h */,
-				F0FD9A221C4670B200A98322 /* syn_ack.c */,
-				F0FD9A231C4670B200A98322 /* syn_ack.h */,
-			);
-			path = proto;
-			sourceTree = "<group>";
-		};
-		F0FD9A241C4670B200A98322 /* utils */ = {
-			isa = PBXGroup;
-			children = (
-				F0FD9A251C4670B200A98322 /* buffer.c */,
-				F0FD9A261C4670B200A98322 /* buffer.h */,
-				F0FD9A271C4670B200A98322 /* log.c */,
-				F0FD9A281C4670B200A98322 /* log.h */,
-				F0FD9A291C4670B200A98322 /* os.c */,
-				F0FD9A2A1C4670B200A98322 /* os.h */,
-				F0FD9A2B1C4670B200A98322 /* sys.c */,
-				F0FD9A2C1C4670B200A98322 /* sys.h */,
-			);
-			path = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +144,12 @@
 			mainGroup = F0FD99791C4520EC00A98322;
 			productRefGroup = F0FD99831C4520EC00A98322 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 218E0E6F1D3E8D7F00F2E188 /* Products */;
+					ProjectRef = 218E0E6E1D3E8D7F00F2E188 /* magnode.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				F0FD99811C4520EC00A98322 /* test_magnode */,
@@ -267,34 +157,36 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		218E0E751D3E8D7F00F2E188 /* libmagnode.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libmagnode.a;
+			remoteRef = 218E0E741D3E8D7F00F2E188 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		218E0E771D3E8D7F00F2E188 /* magnodeTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = magnodeTests.xctest;
+			remoteRef = 218E0E761D3E8D7F00F2E188 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		218E0E791D3E8D7F00F2E188 /* libmagnode_mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libmagnode_mac.a;
+			remoteRef = 218E0E781D3E8D7F00F2E188 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F0FD997E1C4520EC00A98322 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0FD9A381C4670B200A98322 /* auth.c in Sources */,
-				F0FD9A361C4670B200A98322 /* sys.c in Sources */,
 				F0FD99861C4520EC00A98322 /* main.m in Sources */,
-				F0FD9A3F1C4670B200A98322 /* buffer.c in Sources */,
-				F0FD9A301C4670B200A98322 /* magnode_uinty.c in Sources */,
-				F0FD9A391C4670B200A98322 /* confirm.c in Sources */,
-				F0FD9A331C4670B200A98322 /* socket.c in Sources */,
-				F0FD9A3E1C4670B200A98322 /* syn_ack.c in Sources */,
-				F0FD9A321C4670B200A98322 /* poll.c in Sources */,
-				F0FD9A2D1C4670B200A98322 /* magnode.c in Sources */,
-				F0FD9A341C4670B200A98322 /* socket_tcp.c in Sources */,
-				F0FD9A351C4670B200A98322 /* socket_udp.c in Sources */,
-				F0FD9A3D1C4670B200A98322 /* session.c in Sources */,
-				F0FD9A3C1C4670B200A98322 /* proto.c in Sources */,
-				F0FD9A311C4670B200A98322 /* net.c in Sources */,
-				F0FD9A371C4670B200A98322 /* utils.c in Sources */,
-				F0FD9A2F1C4670B200A98322 /* magnode_inner.c in Sources */,
-				F0FD9A421C4670B200A98322 /* sys.c in Sources */,
-				F0FD9A3A1C4670B200A98322 /* frame_head.c in Sources */,
-				F0FD9A401C4670B200A98322 /* log.c in Sources */,
-				F0FD9A411C4670B200A98322 /* os.c in Sources */,
-				F0FD9A2E1C4670B200A98322 /* magnode_errcode.c in Sources */,
-				F0FD9A3B1C4670B200A98322 /* message.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -46,3 +46,9 @@ build/iOS/magnode/magnode.xcodeproj/xcuserdata/
 test/MacOS/.DS_Store
 test/MacOS/test_magnode/test_magnode.xcodeproj/project.xcworkspace/
 test/MacOS/test_magnode/test_magnode.xcodeproj/xcuserdata/
+.DS_Store
+*/.DS_Store
+*/*/.DS_Store
+*/*/*/.DS_Store
+*/*/*/*/.DS_Store
+*/*/*/*t/*/.DS_Store

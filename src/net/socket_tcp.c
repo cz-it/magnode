@@ -10,6 +10,7 @@
 #if defined MN_APPLE  || defined MN_ANDROID
 #include <sys/time.h>
 #endif
+#include <stdio.h>
 
 // send or write
 ssize_t	socket_send(int fd, const void *buf, size_t len, int flag)

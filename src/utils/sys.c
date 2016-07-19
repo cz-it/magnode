@@ -9,6 +9,11 @@
 #include "sys.h"
 
 
+void mn_sys_ignore_pipe(void)
+{
+
+}
+
 #ifdef MN_ANDROID
 uint64_t htonll(uint64_t val) {
     return (((uint64_t) htonl(val)) << 32) + htonl(val >> 32);
