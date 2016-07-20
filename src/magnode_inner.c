@@ -132,14 +132,12 @@ int mn_send_syn(mn_node *node, uint32_t timeout)
         LOG_E("Clear send buffer's legacy error");
         return rst;
     }
-    
     mn_syn syn;
     rst = mn_init_syn(&syn, MN_PB_BIN, MN_CHANNEL_NONE, MN_CRYPTO_NONE);
     if (rst <0) {
         LOG_E("init syn error with %d", rst);
         return rst;
     }
-    
     mn_buffer_reset(&node->packbuf, MN_MAX_PROTO_SIZE);
     rst = mn_pack_syn(&syn, &node->packbuf);
     if (rst < 0 ) {
@@ -319,7 +317,7 @@ int mn_connect_transaction(mn_node *node, uint32_t timeout)
     mn_ack ack;
     rst = mn_recv_ack(node, &ack, rt);
     if (rst <0 ) {
-        LOG_E("send syn error");
+        LOG_E("recv ack error");
         if (MN_ETIMEOUT == rst ) {
             return rst;
         } else {
@@ -351,31 +349,7 @@ int mn_connect_transaction(mn_node *node, uint32_t timeout)
             return MN_ESSSRSP;
         }
     }
-    
-    // send auth
-    rt = mn_cal_remain_time(btime, timeout);
-    rst = mn_send_auth_req(node, rt);
-    if (rst <0 ) {
-        LOG_E("send auth request error");
-        if (MN_ETIMEOUT == rst ) {
-            return rst;
-        } else {
-            return MN_EAUTHREQ;
-        }
-    }
-    
-    // recv auth
-    rt = mn_cal_remain_time(btime, timeout);
-    rst = mn_recv_auth_rsp(node, rt);
-    if (rst <0 ) {
-        LOG_E("recv auth response error");
-        if (MN_ETIMEOUT == rst ) {
-            return rst;
-        } else {
-            return MN_EAUTHRSP;
-        }
-    }
-    
+    LOG_D("get agent id %u", sssrsp.agent_id);
     // recv confirm
     rt = mn_cal_remain_time(btime, timeout);
     rst = mn_recv_confirm(node, rt);

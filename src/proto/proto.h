@@ -33,6 +33,8 @@ enum MN_CMD {
 
     MN_CMD_SSSREQ   = 0x0003,
     MN_CMD_SSSRSP   = 0x0004,
+    
+    MN_CMD_CONFIRM  = 0x006,
 };
 
 typedef struct mn_nodemsg_head_t {

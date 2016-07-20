@@ -33,6 +33,8 @@ extern "C" {
 #endif
     int mn_init_syn(mn_syn *syn, uint16_t protobuf, uint16_t channel, uint16_t crypto);
     
+    int mn_init_ack(mn_ack *ack, uint16_t channel, uint16_t crypto);
+    
     int mn_pack_syn(mn_syn *syn, mn_buffer *buf);
     
     int mn_unpack_syn(mn_syn *syn, mn_buffer *buf);

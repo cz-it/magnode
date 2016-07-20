@@ -30,6 +30,20 @@ typedef  struct mn_message_t
     mn_message_body body;
 } mn_message;
 
+int mn_init_syn_msg(mn_message *msg, uint16_t protobuf, uint16_t channel, uint16_t crypto);
+
+int mn_init_ack_msg(mn_message *msg, uint16_t channel, uint16_t crypto);
+
+int mn_init_sssreq_msg(mn_message *msg);
+
+int mn_init_sssrsp_msg(mn_message *msg, uint32_t agent_id);
+
+int mn_init_confirm_msg(mn_message *msg, int32_t errno);
+
+int mn_pack_msg(mn_message *msg, mn_buffer *buf);
+
+int mn_unpack_msg(mn_message *msg, mn_buffer *buf);
+
 #pragma pack()
 
 #endif /* message_h */

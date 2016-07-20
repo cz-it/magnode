@@ -9,6 +9,19 @@
 #ifndef confirm_h
 #define confirm_h
 
-#include <stdio.h>
+#include "frame_head.h"
+
+#pragma pack(1)
+typedef struct mn_confirm_t
+{
+    int32_t errno;
+} mn_confirm;
+#pragma pack()
+
+int mn_init_confirm(mn_confirm *ack, int32_t errno);
+
+int mn_pack_confirm(mn_confirm *ack, mn_buffer *buf);
+
+int mn_unpack_confirm(mn_confirm *ack, mn_buffer *buf);
 
 #endif /* confirm_h */

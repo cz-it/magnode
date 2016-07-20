@@ -38,6 +38,8 @@ extern "C" {
     
     int mn_buffer_uint32(mn_buffer *buffer, uint32_t *dest);
     
+    int mn_buffer_int32(mn_buffer *buffer, int *dest);
+    
     int mn_buffer_void(mn_buffer *buffer, void *dest, int len);
     
 #ifdef __cplusplus

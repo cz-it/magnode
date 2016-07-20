@@ -18,6 +18,16 @@ int mn_init_sssreq(mn_session_req *sssreq)
     return rst;
 }
 
+int mn_init_sssrsp(mn_session_rsp *sssrsp, uint32_t agent_id)
+{
+    int rst = 0;
+    if (NULL == sssrsp ) {
+        return MN_EARG;
+    }
+    sssrsp->agent_id = agent_id;
+    return rst;
+}
+
 int mn_pack_sssreq(mn_session_req *sssreq, mn_buffer *buf)
 {
     int rst = 0;

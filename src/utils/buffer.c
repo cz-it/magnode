@@ -132,6 +132,21 @@ int mn_buffer_uint32(mn_buffer *buffer, uint32_t *dest)
     return 0;
 }
 
+int mn_buffer_int32(mn_buffer *buffer, int32_t *dest)
+{
+    if (NULL == buffer || NULL==dest) {
+        return MN_EARG;
+    }
+    
+    if (buffer->length < sizeof(*dest)) {
+        return MN_EBUFLEN;
+    }
+    
+    *dest = * ((int32_t *) buffer->data);
+    mn_buffer_align(buffer, sizeof(*dest));
+    return 0;
+}
+
 int mn_buffer_void(mn_buffer *buffer, void *dest, int len)
 {
     if (NULL == buffer || NULL==dest) {

@@ -29,6 +29,8 @@ extern "C" {
 #endif
     int mn_init_sssreq(mn_session_req *sssreq);
     
+    int mn_init_sssrsp(mn_session_rsp *sssrsp, uint32_t agent_id);
+    
     int mn_pack_sssreq(mn_session_req *sssreq, mn_buffer *buf);
     
     int mn_unpack_sssreq(mn_session_req *sssreq, mn_buffer *buf);

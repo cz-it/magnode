@@ -20,6 +20,7 @@
 #include "proto.h"
 #include "syn_ack.h"
 #include "session.h"
+#include "message.h"
 
 #if defined MN_APPLE  || defined MN_ANDROID
 #include <sys/time.h>
