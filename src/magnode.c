@@ -129,6 +129,24 @@ int mn_reconnect(mn_node *node, uint32_t timeout)
 
 int mn_send(mn_node *node,const void *buf,size_t length,uint32_t timeout)
 {
+    int rst;
+    if (NULL == node || NULL==buf ){
+        LOG_E("mn_send: node is NULL or buf is NULL");
+        return MN_EARG;
+    }
+    
+    struct timeval btime;
+    gettimeofday(&btime, NULL);
+    rst = mn_send_nodemsg(node, buf, length, timeout);
+    LOG_D("net mn_send_msg with %d rst", rst);
+    if (rst != 0 ) {
+        if (rst == MN__ETIMEOUT) {
+            return MN_ETIMEOUT;
+        } else {
+            return MN_ECONN;
+        }
+    }
+    return 0;
 #if 0
     mn_nodemsg_head head;
     int rst;
@@ -167,6 +185,24 @@ int mn_send(mn_node *node,const void *buf,size_t length,uint32_t timeout)
 
 int mn_recv(mn_node *node,void *buf,size_t *length,uint32_t timeout)
 {
+    int rst;
+    if (NULL == node || NULL==buf ){
+        LOG_E("mn_recv: node is NULL or buf is NULL");
+        return MN_EARG;
+    }
+    
+    struct timeval btime;
+    gettimeofday(&btime, NULL);
+    rst = mn_recv_knotmsg(node, buf, length, timeout);
+    LOG_D("net mn_recv_msg with %d rst", rst);
+    if (rst != 0 ) {
+        if (rst == MN__ETIMEOUT) {
+            return MN_ETIMEOUT;
+        } else {
+            return MN_ECONN;
+        }
+    }
+    return 0;
 #if 0
     mn_nodemsg_head head;
     int rst;

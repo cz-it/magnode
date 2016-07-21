@@ -32,6 +32,10 @@
 		216CC3771B52A5D800EFD63A /* magnode.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 216CC3761B52A5D800EFD63A /* magnode.h */; };
 		216CC3791B52A5D800EFD63A /* magnode.m in Sources */ = {isa = PBXBuildFile; fileRef = 216CC3781B52A5D800EFD63A /* magnode.m */; };
 		216CC37F1B52A5D800EFD63A /* libmagnode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 216CC3731B52A5D800EFD63A /* libmagnode.a */; };
+		21F688C71D4117DF00E52DDA /* nodemsg.c in Sources */ = {isa = PBXBuildFile; fileRef = 21F688C51D4117DF00E52DDA /* nodemsg.c */; };
+		21F688C81D4117DF00E52DDA /* nodemsg.c in Sources */ = {isa = PBXBuildFile; fileRef = 21F688C51D4117DF00E52DDA /* nodemsg.c */; };
+		21F688CB1D41185400E52DDA /* knotmsg.c in Sources */ = {isa = PBXBuildFile; fileRef = 21F688C91D41185400E52DDA /* knotmsg.c */; };
+		21F688CC1D41185400E52DDA /* knotmsg.c in Sources */ = {isa = PBXBuildFile; fileRef = 21F688C91D41185400E52DDA /* knotmsg.c */; };
 		F04298A01C326F2C001D5637 /* message.c in Sources */ = {isa = PBXBuildFile; fileRef = F042989E1C326F2C001D5637 /* message.c */; };
 		F04298A31C326F52001D5637 /* session.c in Sources */ = {isa = PBXBuildFile; fileRef = F04298A11C326F52001D5637 /* session.c */; };
 		F04298A61C326F66001D5637 /* syn_ack.c in Sources */ = {isa = PBXBuildFile; fileRef = F04298A41C326F66001D5637 /* syn_ack.c */; };
@@ -94,6 +98,10 @@
 		216CC3781B52A5D800EFD63A /* magnode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = magnode.m; sourceTree = "<group>"; };
 		216CC37E1B52A5D800EFD63A /* magnodeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = magnodeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		216CC3841B52A5D800EFD63A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21F688C51D4117DF00E52DDA /* nodemsg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = nodemsg.c; sourceTree = "<group>"; };
+		21F688C61D4117DF00E52DDA /* nodemsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nodemsg.h; sourceTree = "<group>"; };
+		21F688C91D41185400E52DDA /* knotmsg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = knotmsg.c; sourceTree = "<group>"; };
+		21F688CA1D41185400E52DDA /* knotmsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = knotmsg.h; sourceTree = "<group>"; };
 		F042989E1C326F2C001D5637 /* message.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = message.c; sourceTree = "<group>"; };
 		F042989F1C326F2C001D5637 /* message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = message.h; sourceTree = "<group>"; };
 		F04298A11C326F52001D5637 /* session.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = session.c; sourceTree = "<group>"; };
@@ -269,6 +277,10 @@
 				F04298AB1C326F81001D5637 /* confirm.h */,
 				F04298AD1C32810B001D5637 /* frame_head.c */,
 				F04298AE1C32810B001D5637 /* frame_head.h */,
+				21F688C51D4117DF00E52DDA /* nodemsg.c */,
+				21F688C61D4117DF00E52DDA /* nodemsg.h */,
+				21F688C91D41185400E52DDA /* knotmsg.c */,
+				21F688CA1D41185400E52DDA /* knotmsg.h */,
 			);
 			path = proto;
 			sourceTree = "<group>";
@@ -407,8 +419,10 @@
 				2134D4711D3E93B500B12629 /* os.c in Sources */,
 				2134D4721D3E93B500B12629 /* sys.c in Sources */,
 				2134D4741D3E93B500B12629 /* magnode.m in Sources */,
+				21F688CC1D41185400E52DDA /* knotmsg.c in Sources */,
 				2134D4751D3E93B500B12629 /* socket_tcp.c in Sources */,
 				2134D4761D3E93B500B12629 /* utils.c in Sources */,
+				21F688C81D4117DF00E52DDA /* nodemsg.c in Sources */,
 				2134D4771D3E93B500B12629 /* socket.c in Sources */,
 				2134D4781D3E93B500B12629 /* net.c in Sources */,
 				2134D4791D3E93B500B12629 /* magnode.c in Sources */,
@@ -435,8 +449,10 @@
 				F0DBD52D1BFAD87C00C2EC20 /* os.c in Sources */,
 				F0B0FC961C34128600A3DED6 /* sys.c in Sources */,
 				216CC3791B52A5D800EFD63A /* magnode.m in Sources */,
+				21F688CB1D41185400E52DDA /* knotmsg.c in Sources */,
 				F0DBD5281BFAD87C00C2EC20 /* socket_tcp.c in Sources */,
 				F0DBD52A1BFAD87C00C2EC20 /* utils.c in Sources */,
+				21F688C71D4117DF00E52DDA /* nodemsg.c in Sources */,
 				F0DBD5271BFAD87C00C2EC20 /* socket.c in Sources */,
 				F0DBD5251BFAD87C00C2EC20 /* net.c in Sources */,
 				F0DBD5231BFAD87C00C2EC20 /* magnode.c in Sources */,

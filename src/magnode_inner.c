@@ -177,6 +177,11 @@ int mn_recv_ack(mn_node *node, mn_ack *ack, uint32_t timeout)
         LOG_E("upack frame head error!");
         return rst;
     }
+    
+    if (MN_CMD_ACK != frame_head.cmd ) {
+        return MN_ECMD;
+    }
+    
     rt = mn_cal_remain_time(btime, timeout);
     rst = mn_recv_message(node, frame_head.length, rt);
     if (rst < 0) {
@@ -251,6 +256,11 @@ int mn_recv_session_rsp(mn_node *node, mn_session_rsp *sssrsp, uint32_t timeout)
         LOG_E("upack frame head error!");
         return rst;
     }
+    
+    if (MN_CMD_SSSRSP != frame_head.cmd ) {
+        return MN_ECMD;
+    }
+    
     rt = mn_cal_remain_time(btime, timeout);
     rst = mn_recv_message(node, frame_head.length, rt);
     if (rst < 0) {
@@ -266,26 +276,45 @@ int mn_recv_session_rsp(mn_node *node, mn_session_rsp *sssrsp, uint32_t timeout)
     return 0;
 }
 
-int mn_send_auth_req(mn_node *node, uint32_t timeout)
-{
-    if (NULL == node) {
-        return MN_ENULLNODE;
-    }
-    return 0;
-}
-
-int mn_recv_auth_rsp(mn_node *node, uint32_t timeout)
-{
-    if (NULL == node) {
-        return MN_ENULLNODE;
-    }
-    return 0;
-}
-
 int mn_recv_confirm(mn_node *node, uint32_t timeout)
 {
+    int rst = 0;
     if (NULL == node) {
         return MN_ENULLNODE;
+    }
+
+    uint32_t rt = timeout;
+    struct timeval btime;
+    gettimeofday(&btime, NULL);
+    if ( node->recvbuf.length < sizeof(mn_frame_head)) {
+        rst = mn_recv_framehead(node, timeout);
+        if (rst < 0) {
+            return rst;
+        }
+    }
+    mn_frame_head frame_head;
+    rst = mn_unpack_frame_head(&frame_head, &node->recvbuf);
+    if (rst <0) {
+        LOG_E("upack frame head error!");
+        return rst;
+    }
+    
+    if (MN_CMD_CONFIRM != frame_head.cmd ) {
+        return MN_ECMD;
+    }
+    
+    rt = mn_cal_remain_time(btime, timeout);
+    rst = mn_recv_message(node, frame_head.length, rt);
+    if (rst < 0) {
+        LOG_E("Recv Message Error !");
+        return rst;
+    }
+    mn_confirm confirm;
+    mn_init_confirm(&confirm, 0);
+    rst = mn_unpack_confirm(&confirm, &node->recvbuf);
+    if (rst < 0) {
+        LOG_E("Unpack Confirm error !");
+        return rst;
     }
     return 0;
 }
@@ -361,7 +390,89 @@ int mn_connect_transaction(mn_node *node, uint32_t timeout)
             return MN_ECONFIRM;
         }
     }
+    node->agent_id = sssrsp.agent_id;
+    return 0;
+}
+
+
+int mn_send_nodemsg(mn_node *node,const void *buf,size_t length,uint32_t timeout)
+{
+    int rst = 0;
+    uint32_t rt = timeout;
+    if (NULL == node || NULL == buf) {
+        return MN_ENULLNODE;
+    }
     
+    rst = mn_clear_legacy_sendbuf(node);
+    if (rst) {
+        LOG_E("Clear send buffer's legacy error");
+        return rst;
+    }
+    
+    mn_nodemsg nodemsg;
+    rst = mn_init_nodemsg(&nodemsg, buf, length);
+    if (rst <0) {
+        LOG_E("init nodemsg error with %d", rst);
+        return rst;
+    }
+    
+    mn_buffer_reset(&node->packbuf, MN_MAX_PROTO_SIZE);
+    rst = mn_pack_nodemsg(&nodemsg, &node->packbuf);
+    if (rst < 0 ) {
+        LOG_E("pack nodemsg error ");
+        return -1;
+    }
+    rst = mn_send_packbuf(node);
+    if (rst < 0) {
+        LOG_E("send nodemsg error with %d", rst);
+        return rst;
+    }
+
+    return 0;
+}
+
+int mn_recv_knotmsg(mn_node *node,void *buf,size_t *length,uint32_t timeout)
+{
+    int rst = 0;
+    uint32_t rt = timeout;
+    if (NULL == node || NULL == buf) {
+        return MN_ENULLNODE;
+    }
+    
+    
+    struct timeval btime;
+    gettimeofday(&btime, NULL);
+    if ( node->recvbuf.length < sizeof(mn_frame_head)) {
+        rst = mn_recv_framehead(node, timeout);
+        if (rst < 0) {
+            return rst;
+        }
+    }
+    mn_frame_head frame_head;
+    rst = mn_unpack_frame_head(&frame_head, &node->recvbuf);
+    if (rst <0) {
+        LOG_E("upack frame head error!");
+        return rst;
+    }
+    
+    if (MN_CMD_KNOTMSG != frame_head.cmd ) {
+        return MN_ECMD;
+    }
+    
+    rt = mn_cal_remain_time(btime, timeout);
+    rst = mn_recv_message(node, frame_head.length, rt);
+    if (rst < 0) {
+        LOG_E("Recv Message Error !");
+        return rst;
+    }
+    mn_knotmsg knotmsg;
+    mn_init_knotmsg(&knotmsg, buf, *length);
+    rst = mn_unpack_knotmsg(&knotmsg, &node->recvbuf);
+    if (rst < 0) {
+        LOG_E("Unpack Knotmsg error !");
+        return rst;
+    }
+    *length = knotmsg.len;
     return 0;
 }
 
