@@ -36,6 +36,8 @@
 		21F688C81D4117DF00E52DDA /* nodemsg.c in Sources */ = {isa = PBXBuildFile; fileRef = 21F688C51D4117DF00E52DDA /* nodemsg.c */; };
 		21F688CB1D41185400E52DDA /* knotmsg.c in Sources */ = {isa = PBXBuildFile; fileRef = 21F688C91D41185400E52DDA /* knotmsg.c */; };
 		21F688CC1D41185400E52DDA /* knotmsg.c in Sources */ = {isa = PBXBuildFile; fileRef = 21F688C91D41185400E52DDA /* knotmsg.c */; };
+		21F688CF1D413B4800E52DDA /* disconn.c in Sources */ = {isa = PBXBuildFile; fileRef = 21F688CD1D413B4800E52DDA /* disconn.c */; };
+		21F688D01D413B4800E52DDA /* disconn.c in Sources */ = {isa = PBXBuildFile; fileRef = 21F688CD1D413B4800E52DDA /* disconn.c */; };
 		F04298A01C326F2C001D5637 /* message.c in Sources */ = {isa = PBXBuildFile; fileRef = F042989E1C326F2C001D5637 /* message.c */; };
 		F04298A31C326F52001D5637 /* session.c in Sources */ = {isa = PBXBuildFile; fileRef = F04298A11C326F52001D5637 /* session.c */; };
 		F04298A61C326F66001D5637 /* syn_ack.c in Sources */ = {isa = PBXBuildFile; fileRef = F04298A41C326F66001D5637 /* syn_ack.c */; };
@@ -102,6 +104,8 @@
 		21F688C61D4117DF00E52DDA /* nodemsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nodemsg.h; sourceTree = "<group>"; };
 		21F688C91D41185400E52DDA /* knotmsg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = knotmsg.c; sourceTree = "<group>"; };
 		21F688CA1D41185400E52DDA /* knotmsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = knotmsg.h; sourceTree = "<group>"; };
+		21F688CD1D413B4800E52DDA /* disconn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = disconn.c; sourceTree = "<group>"; };
+		21F688CE1D413B4800E52DDA /* disconn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = disconn.h; sourceTree = "<group>"; };
 		F042989E1C326F2C001D5637 /* message.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = message.c; sourceTree = "<group>"; };
 		F042989F1C326F2C001D5637 /* message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = message.h; sourceTree = "<group>"; };
 		F04298A11C326F52001D5637 /* session.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = session.c; sourceTree = "<group>"; };
@@ -281,6 +285,8 @@
 				21F688C61D4117DF00E52DDA /* nodemsg.h */,
 				21F688C91D41185400E52DDA /* knotmsg.c */,
 				21F688CA1D41185400E52DDA /* knotmsg.h */,
+				21F688CD1D413B4800E52DDA /* disconn.c */,
+				21F688CE1D413B4800E52DDA /* disconn.h */,
 			);
 			path = proto;
 			sourceTree = "<group>";
@@ -422,6 +428,7 @@
 				21F688CC1D41185400E52DDA /* knotmsg.c in Sources */,
 				2134D4751D3E93B500B12629 /* socket_tcp.c in Sources */,
 				2134D4761D3E93B500B12629 /* utils.c in Sources */,
+				21F688D01D413B4800E52DDA /* disconn.c in Sources */,
 				21F688C81D4117DF00E52DDA /* nodemsg.c in Sources */,
 				2134D4771D3E93B500B12629 /* socket.c in Sources */,
 				2134D4781D3E93B500B12629 /* net.c in Sources */,
@@ -452,6 +459,7 @@
 				21F688CB1D41185400E52DDA /* knotmsg.c in Sources */,
 				F0DBD5281BFAD87C00C2EC20 /* socket_tcp.c in Sources */,
 				F0DBD52A1BFAD87C00C2EC20 /* utils.c in Sources */,
+				21F688CF1D413B4800E52DDA /* disconn.c in Sources */,
 				21F688C71D4117DF00E52DDA /* nodemsg.c in Sources */,
 				F0DBD5271BFAD87C00C2EC20 /* socket.c in Sources */,
 				F0DBD5251BFAD87C00C2EC20 /* net.c in Sources */,

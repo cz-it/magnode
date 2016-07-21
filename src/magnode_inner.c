@@ -476,3 +476,40 @@ int mn_recv_knotmsg(mn_node *node,void *buf,size_t *length,uint32_t timeout)
     return 0;
 }
 
+int mn_send_disconn(mn_node *node,uint32_t timeout)
+{
+    int rst = 0;
+    uint32_t rt = timeout;
+    if (NULL == node ) {
+        return MN_ENULLNODE;
+    }
+    
+    rst = mn_clear_legacy_sendbuf(node);
+    if (rst) {
+        LOG_E("Clear send buffer's legacy error");
+        return rst;
+    }
+    
+    mn_disconn disconn;
+    rst = mn_init_disconn(&disconn);
+    if (rst <0) {
+        LOG_E("init disconn error with %d", rst);
+        return rst;
+    }
+    
+    mn_buffer_reset(&node->packbuf, MN_MAX_PROTO_SIZE);
+    rst = mn_pack_disconn(&disconn, &node->sendbuf);
+    if (rst < 0 ) {
+        LOG_E("pack disconn error ");
+        return -1;
+    }
+    rst = mn_send_packbuf(node);
+    if (rst < 0) {
+        LOG_E("send disconn error with %d", rst);
+        return rst;
+    }
+    
+    return 0;
+
+}
+

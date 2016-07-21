@@ -135,8 +135,6 @@ int mn_send(mn_node *node,const void *buf,size_t length,uint32_t timeout)
         return MN_EARG;
     }
     
-    struct timeval btime;
-    gettimeofday(&btime, NULL);
     rst = mn_send_nodemsg(node, buf, length, timeout);
     LOG_D("net mn_send_msg with %d rst", rst);
     if (rst != 0 ) {
@@ -146,40 +144,7 @@ int mn_send(mn_node *node,const void *buf,size_t length,uint32_t timeout)
             return MN_ECONN;
         }
     }
-    return 0;
-#if 0
-    mn_nodemsg_head head;
-    int rst;
-    if (NULL == node || NULL == buf ){
-        LOG_E("mn_send: node is NULL or buf is NULL");
-        return MN_EARG;
-    }
     
-    MN_NODEMSG_HEAD_INIT(&head, MN_CMD_MSG_NODE, node->agent_id);
-    if (length < MN_MAX_SENDBUF_SIZE) {
-        node->sendbuflen  = length;
-    }
-    node->sendbuflen =MN_MAX_SENDBUF_SIZE;
-    head.agent_id = node->agent_id;
-    head.length = length;
-    rst = parse2mem(&head, buf, length, node->sendbuf, &node->sendbuflen);
-    if (rst != 0) {
-        return MN_EPARSE;
-    }
-    
-    struct timeval sbtime;
-    gettimeofday(&sbtime, NULL);
-    rst = mn_net_send(&node->socket, node->sendbuf, &node->sendbuflen, timeout);
-    if (rst != 0 ) {
-        return MN_ESEND;
-    }
-    struct timeval setime;
-    gettimeofday(&setime, NULL);
-    long diff = timeval_min_usec(&setime, &sbtime);
-    if (diff<0 || (timeout >0 &&diff > timeout)) {
-        return MN_ETIMEOUT;
-    }
-#endif
     return 0;
 }
 
@@ -202,93 +167,26 @@ int mn_recv(mn_node *node,void *buf,size_t *length,uint32_t timeout)
             return MN_ECONN;
         }
     }
-    return 0;
-#if 0
-    mn_nodemsg_head head;
-    int rst;
-    struct timeval sbtime;
-    struct timeval setime;
-    long diff;
-    if (NULL == node || NULL == buf){
-        LOG_E("mn_recv: node is NULL or buf is NULL");
-        return MN_EARG;
-    }
     
-    MN_NODEMSG_HEAD_INIT(&head, MN_CMD_REQ_SEND, node->agent_id);
-    
-    node->recvbuflen = sizeof(mn_nodemsg_head);
-    memset(node->recvbuf, 0, MN_MAX_RECVBUF_SIZE);
-    gettimeofday(&sbtime, NULL);
-    rst = mn_net_recv(&node->socket, node->recvbuf, &node->recvbuflen, timeout);
-    if (rst != 0 ) {
-        if (rst == MN__ETIMEOUT) {
-            return MN_ETIMEOUT;
-        }
-        return MN_ERECV;
-    }
-    gettimeofday(&setime, NULL);
-    diff = timeval_min_usec(&setime, &sbtime);
-    if (diff < 0 ||(timeout >0 && diff > timeout)) {
-        return MN_ETIMEOUT;
-    }
-    rst = parse_from_mem(&head, node->recvbuf, &node->recvbuflen, node->recvbuf);
-    if (rst != 0 ){
-        return MN_EUNPARSE;
-    }
-    
-    rst = is_invalied_head(&head);
-    if (0 != rst ) {
-        return MN_EHEAD;
-    }
-    if (MN_CMD_MSG_KNOT) {
-        uint64_t rtimeout = timeout - diff;
-        memset(node->recvbuf, 0, MN_MAX_RECVBUF_SIZE);
-        node->recvbuflen = head.length;
-        gettimeofday(&sbtime, NULL);
-        rst = mn_net_recv(&node->socket, node->recvbuf, &node->recvbuflen, rtimeout);
-        if (rst != 0 ) {
-            if (rst == MN__ETIMEOUT) {
-                return MN_ETIMEOUT;
-            }
-            return MN_ERECV;
-        }
-        gettimeofday(&setime, NULL);
-        if (diff < 0 || (timeout > 0 && diff > rtimeout)) {
-            return MN_ETIMEOUT;
-        }
-        memcpy(buf, node->recvbuf, node->recvbuflen);
-        *length =node->recvbuflen;
-        return 0;
-    } else {
-        return MN_ECMD;
-    }
-#endif 
     return 0;
 }
 
 int mn_close(mn_node *node)
 {
-#if 0
-    mn_nodemsg_head head;
     int rst;
-    if (NULL == node){
-        LOG_E("mn_close: node is NULL");
+    if (NULL == node ){
+        LOG_E("mn_recv: node  is NULL");
         return MN_EARG;
     }
-    LOG_I("mn_close(node %p)", node);
     
-    MN_NODEMSG_HEAD_INIT(&head, MN_CMD_REQ_CLOSE, node->agent_id);
-    
-    rst = parse2mem(&head, NULL, 0, node->sendbuf, &node->sendbuflen);
-    if (rst != 0) {
-        return MN_EPARSE;
-    }
-    
-    rst = mn_net_send(&node->socket, node->sendbuf, &node->sendbuflen, MN_MAX_TIMEOUT);
+    rst = mn_send_disconn(node, 200); // 100ms is a magic number
+    LOG_D("net mn_send_disconn with %d rst", rst);
     if (rst != 0 ) {
-        return MN_ESEND;
+        if (rst == MN__ETIMEOUT) {
+            return MN_ETIMEOUT;
+        } else {
+            return MN_ECONN;
+        }
     }
-    mn_net_close(&node->socket);
-#endif
     return 0;
 }

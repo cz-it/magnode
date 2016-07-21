@@ -39,6 +39,8 @@ enum MN_CMD {
     MN_CMD_NODEMSG  = 0x0009,
     
     MN_CMD_KNOTMSG  = 0x000A,
+    
+    MN_CMD_DISCONN  = 0x000E,
 };
 
 typedef struct mn_nodemsg_head_t {

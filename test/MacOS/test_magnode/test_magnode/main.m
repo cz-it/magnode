@@ -21,6 +21,8 @@ int main(int argc, const char * argv[]) {
     size_t len = 1024;
     mn_recv(node, recvbuf, &len, 5000);
     printf("len is %zu , buf is %s \n", len, recvbuf);
+    
+    mn_close(node);
     @autoreleasepool {
         // insert code here...
         NSLog(@"Hello, World!");

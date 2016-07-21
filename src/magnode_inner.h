@@ -23,6 +23,7 @@
 #include "message.h"
 #include "nodemsg.h"
 #include "knotmsg.h"
+#include "disconn.h"
 
 #if defined MN_APPLE  || defined MN_ANDROID
 #include <sys/time.h>
@@ -84,6 +85,8 @@ extern "C" {
     int mn_send_nodemsg(mn_node *node,const void *buf,size_t length,uint32_t timeout);
     
     int mn_recv_knotmsg(mn_node *node,void *buf,size_t *length,uint32_t timeout);
+    
+    int mn_send_disconn(mn_node *node,uint32_t timeout);
     
 #ifdef __cplusplus
 }
