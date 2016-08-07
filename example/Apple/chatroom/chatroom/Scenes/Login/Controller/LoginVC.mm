@@ -11,7 +11,7 @@
 #include "chatroom.pb.h"
 #include <string>
 
-
+#define BUF_SIZE 10240
 
 @interface LoginVC () {
     mn_node *node;
@@ -62,8 +62,48 @@
     msg.set_type(proto::Message_MessageType_ENTER_ROOM_REQ);
     msg.set_allocated_enterroomreq(enterReq);
     
-    std::string buf  = msg.SerializeAsString();
-    mn_send(self->node, buf.c_str(), buf.length(), 3000);
+    std::string sbuf  = msg.SerializeAsString();
+    mn_send(self->node, sbuf.c_str(), sbuf.length(), 3000);
+    char buf[BUF_SIZE];
+    memset(buf, 0, BUF_SIZE);
+    size_t len = BUF_SIZE;
+    mn_recv(self->node, buf, &len, 30000);
+    
+    msg.Clear();
+    msg.ParseFromArray(buf, len);
+    NSLog(@"enter result %d", msg.type());
+    [self sendAndRecv];
+}
+
+- (void) sendAndRecv {
+    static int seq = 0;
+    std::string payload = "hello";
+    proto::UpMessage *upMsg  = new proto::UpMessage();
+    upMsg->set_message(payload);
+    upMsg->set_length(payload.length());
+    
+    proto::Message msg;
+    msg.set_type(proto::Message_MessageType_UP_MESSAGE);
+    msg.set_allocated_upmessage(upMsg);
+    
+    std::string sbuf  = msg.SerializeAsString();
+    mn_send(self->node, sbuf.c_str(), sbuf.length(), 3000);
+    
+    sleep(1);
+    
+    char buf[BUF_SIZE];
+    memset(buf, 0, BUF_SIZE);
+    size_t len = BUF_SIZE;
+    mn_recv(self->node, buf, &len, 3000);
+    
+    msg.Clear();
+    msg.ParseFromArray(buf, len);
+    NSLog(@"msg type", msg.type());
+    if (msg.type() != proto::Message_MessageType_DOWN_MESSAGE) {
+        NSLog(@"not download message");
+    }
+    NSLog(@"get message %s", msg.downmessage().message().c_str());
+
 }
 
 /*

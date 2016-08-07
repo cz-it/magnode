@@ -8,7 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		2123BC0B1D462E2D007C08C6 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 2123BC0A1D462E2D007C08C6 /* main.c */; };
+		2123BC1D1D462F2A007C08C6 /* libmagnode_mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2123BC1C1D462EB0007C08C6 /* libmagnode_mac.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2123BC171D462EB0007C08C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2123BC111D462EB0007C08C6 /* magnode.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 216CC3731B52A5D800EFD63A;
+			remoteInfo = magnode;
+		};
+		2123BC191D462EB0007C08C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2123BC111D462EB0007C08C6 /* magnode.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 216CC37E1B52A5D800EFD63A;
+			remoteInfo = magnodeTests;
+		};
+		2123BC1B1D462EB0007C08C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2123BC111D462EB0007C08C6 /* magnode.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2134D4831D3E93B500B12629;
+			remoteInfo = magnode_mac;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		2123BC051D462E2D007C08C6 /* CopyFiles */ = {
@@ -25,6 +50,7 @@
 /* Begin PBXFileReference section */
 		2123BC071D462E2D007C08C6 /* echo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = echo; sourceTree = BUILT_PRODUCTS_DIR; };
 		2123BC0A1D462E2D007C08C6 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		2123BC111D462EB0007C08C6 /* magnode.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = magnode.xcodeproj; path = ../../../build/iOS/magnode/magnode.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2123BC1D1D462F2A007C08C6 /* libmagnode_mac.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +68,7 @@
 		2123BBFE1D462E2D007C08C6 = {
 			isa = PBXGroup;
 			children = (
+				2123BC111D462EB0007C08C6 /* magnode.xcodeproj */,
 				2123BC091D462E2D007C08C6 /* echo */,
 				2123BC081D462E2D007C08C6 /* Products */,
 			);
@@ -60,6 +88,16 @@
 				2123BC0A1D462E2D007C08C6 /* main.c */,
 			);
 			path = echo;
+			sourceTree = "<group>";
+		};
+		2123BC121D462EB0007C08C6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2123BC181D462EB0007C08C6 /* libmagnode.a */,
+				2123BC1A1D462EB0007C08C6 /* magnodeTests.xctest */,
+				2123BC1C1D462EB0007C08C6 /* libmagnode_mac.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -106,12 +144,42 @@
 			mainGroup = 2123BBFE1D462E2D007C08C6;
 			productRefGroup = 2123BC081D462E2D007C08C6 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2123BC121D462EB0007C08C6 /* Products */;
+					ProjectRef = 2123BC111D462EB0007C08C6 /* magnode.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2123BC061D462E2D007C08C6 /* echo */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2123BC181D462EB0007C08C6 /* libmagnode.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libmagnode.a;
+			remoteRef = 2123BC171D462EB0007C08C6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2123BC1A1D462EB0007C08C6 /* magnodeTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = magnodeTests.xctest;
+			remoteRef = 2123BC191D462EB0007C08C6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2123BC1C1D462EB0007C08C6 /* libmagnode_mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libmagnode_mac.a;
+			remoteRef = 2123BC1B1D462EB0007C08C6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2123BC031D462E2D007C08C6 /* Sources */ = {
@@ -209,6 +277,7 @@
 		2123BC0F1D462E2D007C08C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = ../../../include/;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -216,6 +285,7 @@
 		2123BC101D462E2D007C08C6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = ../../../include/;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -239,6 +309,7 @@
 				2123BC101D462E2D007C08C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
