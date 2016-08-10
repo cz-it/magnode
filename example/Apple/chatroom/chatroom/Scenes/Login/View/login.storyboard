@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -77,15 +77,15 @@
                                 <exclude reference="dRr-zf-aKd"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="PwB-Ng-0ET"/>
-                                <exclude reference="O7y-p3-VS1"/>
-                                <exclude reference="ZS4-ZR-XaC"/>
-                                <exclude reference="lTu-Qw-Pvg"/>
                                 <exclude reference="KF4-Hq-TOQ"/>
                                 <exclude reference="dcl-Fl-cBW"/>
                                 <exclude reference="gIw-mO-ieI"/>
+                                <exclude reference="O7y-p3-VS1"/>
+                                <exclude reference="ZS4-ZR-XaC"/>
+                                <exclude reference="lTu-Qw-Pvg"/>
                                 <exclude reference="4Dk-HS-KSO"/>
                                 <exclude reference="8sP-ZA-soq"/>
+                                <exclude reference="PwB-Ng-0ET"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -95,15 +95,15 @@
                                 <include reference="dRr-zf-aKd"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="PwB-Ng-0ET"/>
-                                <include reference="O7y-p3-VS1"/>
-                                <include reference="ZS4-ZR-XaC"/>
-                                <include reference="lTu-Qw-Pvg"/>
                                 <include reference="KF4-Hq-TOQ"/>
                                 <include reference="dcl-Fl-cBW"/>
                                 <include reference="gIw-mO-ieI"/>
+                                <include reference="O7y-p3-VS1"/>
+                                <include reference="ZS4-ZR-XaC"/>
+                                <include reference="lTu-Qw-Pvg"/>
                                 <include reference="4Dk-HS-KSO"/>
                                 <include reference="8sP-ZA-soq"/>
+                                <include reference="PwB-Ng-0ET"/>
                             </mask>
                         </variation>
                     </view>

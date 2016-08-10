@@ -52,7 +52,7 @@
         return NO;
     }
     
-    rst = mn_connect(self->node, "tcp://127.0.0.1:8084", 3000);
+    rst = mn_connect(self->node, "tcp://192.168.31.205:8084", 3000);
     if (rst) {
         NSLog(@"mn_connect error with %d", rst);
         return NO;
@@ -84,7 +84,6 @@
     msg.Clear();
     msg.ParseFromArray(buf, (int)len);
     NSLog(@"enter result %d", msg.type());
-    [self sendAndRecv];
     return YES;
 }
 
@@ -98,11 +97,11 @@
     hud.minSize = CGSizeMake(150.f, 100.f);
     
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
-        //[self connect2server];
+        [self connect2server];
         hud.labelText = NSLocalizedString(@"Enter room...", @"HUD preparing title");
-        //[self enterRoom];
+        [self enterRoom];
         
-        [self.parentViewController performSegueWithIdentifier:@"pushDialogBox" sender:self];
+        //[self.parentViewController performSegueWithIdentifier:@"pushDialogBox" sender:self];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hide:YES];
@@ -115,6 +114,39 @@
     if ([[segue identifier] isEqualToString:@"pushDialogBox"]) {
         NSLog(@"pushDialogBox");
     }
+}
+- (IBAction)onSend:(id)sender {
+    int rst = 0;
+    std::string payload = "hello";
+    proto::UpMessage *upMsg  = new proto::UpMessage();
+    upMsg->set_message(payload);
+    upMsg->set_length(payload.length());
+    
+    proto::Message msg;
+    msg.set_type(proto::Message_MessageType_UP_MESSAGE);
+    msg.set_allocated_upmessage(upMsg);
+    
+    std::string sbuf  = msg.SerializeAsString();
+    rst = mn_send(self->node, sbuf.c_str(), sbuf.length(), 3000);
+    NSLog(@"mn_send with %d", rst);
+}
+
+- (IBAction)onRecv:(id)sender {
+    int rst  = 0;
+    char buf[BUF_SIZE];
+    memset(buf, 0, BUF_SIZE);
+    size_t len = BUF_SIZE;
+    rst = mn_recv(self->node, buf, &len, 3000);
+    NSLog(@"mn_recv with %d", rst);
+    
+    proto::Message msg;
+    msg.ParseFromArray(buf, len);
+    NSLog(@"msg type", msg.type());
+    if (msg.type() != proto::Message_MessageType_DOWN_MESSAGE) {
+        NSLog(@"not download message");
+    }
+    NSLog(@"get message %s", msg.downmessage().message().c_str());
+
 }
 
 - (void) sendAndRecv {
