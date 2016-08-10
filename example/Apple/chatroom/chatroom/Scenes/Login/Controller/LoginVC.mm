@@ -9,6 +9,10 @@
 
 #import "LoginVC.h"
 #include "chatroom.pb.h"
+#include "DialogBoxVC.h"
+
+
+#include <MBProgressHUD/MBProgressHUD.h>
 #include <string>
 
 #define BUF_SIZE 10240
@@ -24,32 +28,40 @@
 @implementation LoginVC
 
 - (void)viewDidLoad {
-    int rst = 0;
+
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self->node = mn_new();
-    if (NULL == self->node) {
-        NSLog(@"new magnode error");
-        return ;
-    }
-    rst = mn_init(self->node);
-    if (rst) {
-        NSLog(@"mn_init error with %d", rst);
-        return ;
-    }
 
-    rst = mn_connect(self->node, "tcp://127.0.0.1:8084", 3000);
-    if (rst) {
-        NSLog(@"mn_connect error with %d", rst);
-        return ;
-    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)onEnter:(id)sender {
+
+- (BOOL)  connect2server {
+    int rst = 0;
+    self->node = mn_new();
+    if (NULL == self->node) {
+        NSLog(@"new magnode error");
+        return NO;
+    }
+    rst = mn_init(self->node);
+    if (rst) {
+        NSLog(@"mn_init error with %d", rst);
+        return NO;
+    }
+    
+    rst = mn_connect(self->node, "tcp://127.0.0.1:8084", 3000);
+    if (rst) {
+        NSLog(@"mn_connect error with %d", rst);
+        return NO;
+    }
+    return YES;
+}
+
+- (BOOL) enterRoom {
+
     std::string roomName = [[_roomNameLbl text] cStringUsingEncoding:NSUTF8StringEncoding];
     std::string nickName = [[_nickNameLbl text] cStringUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"enter room %s with %s", roomName.c_str(), nickName.c_str());
@@ -70,9 +82,39 @@
     mn_recv(self->node, buf, &len, 30000);
     
     msg.Clear();
-    msg.ParseFromArray(buf, len);
+    msg.ParseFromArray(buf, (int)len);
     NSLog(@"enter result %d", msg.type());
     [self sendAndRecv];
+    return YES;
+}
+
+
+- (IBAction)onEnter:(id)sender {
+    
+    
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    hud.labelText = NSLocalizedString(@"Connecting to server...", @"HUD preparing title");
+    hud.minSize = CGSizeMake(150.f, 100.f);
+    
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
+        //[self connect2server];
+        hud.labelText = NSLocalizedString(@"Enter room...", @"HUD preparing title");
+        //[self enterRoom];
+        
+        [self.parentViewController performSegueWithIdentifier:@"pushDialogBox" sender:self];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hide:YES];
+        });
+    });
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"pushDialogBox"]) {
+        NSLog(@"pushDialogBox");
+    }
 }
 
 - (void) sendAndRecv {

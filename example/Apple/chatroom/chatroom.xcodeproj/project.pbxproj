@@ -13,7 +13,6 @@
 		210872991D539A2400CD451A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 210872981D539A2400CD451A /* Assets.xcassets */; };
 		2108729C1D539A2400CD451A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2108729A1D539A2400CD451A /* LaunchScreen.storyboard */; };
 		210872A71D539A2400CD451A /* chatroomTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 210872A61D539A2400CD451A /* chatroomTests.m */; };
-		210872B71D539AD900CD451A /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 210872B61D539AD900CD451A /* login.storyboard */; };
 		210872BA1D539AF400CD451A /* LoginVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 210872B91D539AF400CD451A /* LoginVC.mm */; };
 		210872C71D539C6F00CD451A /* libmagnode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 210872C21D539C6200CD451A /* libmagnode.a */; };
 		21F74D3E1D54EB990014E41C /* importer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 21F74CE51D54EB980014E41C /* importer.cc */; };
@@ -57,6 +56,12 @@
 		21F74D751D54FE8A0014E41C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F74D741D54FE8A0014E41C /* UIKit.framework */; };
 		21F74D771D54FE910014E41C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F74D761D54FE910014E41C /* Foundation.framework */; };
 		21F74D7A1D54FF340014E41C /* descriptor.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 21F74D781D54FF340014E41C /* descriptor.pb.cc */; };
+		A0D5C7354FFF0F6809D3B01B /* libPods-chatroom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F8BAF3A5F98253BEE53EDE7 /* libPods-chatroom.a */; };
+		F0429AB41D5B587C00AB1AF2 /* DialogBoxVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F0429AB31D5B587C00AB1AF2 /* DialogBoxVC.m */; };
+		F0429ABE1D5B5CCC00AB1AF2 /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0429ABD1D5B5CCC00AB1AF2 /* login.storyboard */; };
+		F0429AC11D5B681F00AB1AF2 /* DialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0429AC01D5B681F00AB1AF2 /* DialogView.m */; };
+		F0429AC41D5B683B00AB1AF2 /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0429AC31D5B683B00AB1AF2 /* MessageView.m */; };
+		F0429AC71D5B716200AB1AF2 /* InputView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0429AC61D5B716200AB1AF2 /* InputView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,7 +112,6 @@
 		210872A21D539A2400CD451A /* chatroomTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chatroomTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		210872A61D539A2400CD451A /* chatroomTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = chatroomTests.m; sourceTree = "<group>"; };
 		210872A81D539A2400CD451A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		210872B61D539AD900CD451A /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = login.storyboard; sourceTree = "<group>"; };
 		210872B81D539AF400CD451A /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
 		210872B91D539AF400CD451A /* LoginVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoginVC.mm; sourceTree = "<group>"; };
 		210872BB1D539C6100CD451A /* magnode.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = magnode.xcodeproj; path = ../../../../build/iOS/magnode/magnode.xcodeproj; sourceTree = "<group>"; };
@@ -210,6 +214,18 @@
 		21F74D761D54FE910014E41C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		21F74D781D54FF340014E41C /* descriptor.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = descriptor.pb.cc; sourceTree = "<group>"; };
 		21F74D791D54FF340014E41C /* descriptor.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = descriptor.pb.h; sourceTree = "<group>"; };
+		4E26CF1D3E3C2C72A2E55A2F /* Pods-chatroom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chatroom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-chatroom/Pods-chatroom.debug.xcconfig"; sourceTree = "<group>"; };
+		5F8BAF3A5F98253BEE53EDE7 /* libPods-chatroom.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-chatroom.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A12571633B7BF65C5A1F4138 /* Pods-chatroom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chatroom.release.xcconfig"; path = "Pods/Target Support Files/Pods-chatroom/Pods-chatroom.release.xcconfig"; sourceTree = "<group>"; };
+		F0429AB21D5B587C00AB1AF2 /* DialogBoxVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogBoxVC.h; sourceTree = "<group>"; };
+		F0429AB31D5B587C00AB1AF2 /* DialogBoxVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogBoxVC.m; sourceTree = "<group>"; };
+		F0429ABD1D5B5CCC00AB1AF2 /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = login.storyboard; sourceTree = "<group>"; };
+		F0429ABF1D5B681F00AB1AF2 /* DialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogView.h; sourceTree = "<group>"; };
+		F0429AC01D5B681F00AB1AF2 /* DialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogView.m; sourceTree = "<group>"; };
+		F0429AC21D5B683B00AB1AF2 /* MessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageView.h; sourceTree = "<group>"; };
+		F0429AC31D5B683B00AB1AF2 /* MessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageView.m; sourceTree = "<group>"; };
+		F0429AC51D5B716200AB1AF2 /* InputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputView.h; sourceTree = "<group>"; };
+		F0429AC61D5B716200AB1AF2 /* InputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +238,7 @@
 				21F74D731D54FE590014E41C /* libstdc++.6.0.9.tbd in Frameworks */,
 				21F74D691D54EDA50014E41C /* libz.tbd in Frameworks */,
 				210872C71D539C6F00CD451A /* libmagnode.a in Frameworks */,
+				A0D5C7354FFF0F6809D3B01B /* libPods-chatroom.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +252,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B386EA953FE079F3D47144B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5F8BAF3A5F98253BEE53EDE7 /* libPods-chatroom.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2108727A1D539A2400CD451A = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +270,8 @@
 				210872851D539A2400CD451A /* chatroom */,
 				210872A51D539A2400CD451A /* chatroomTests */,
 				210872841D539A2400CD451A /* Products */,
+				7A0195CACD1820BF4086F3A9 /* Pods */,
+				1B386EA953FE079F3D47144B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -354,6 +381,8 @@
 			children = (
 				210872B81D539AF400CD451A /* LoginVC.h */,
 				210872B91D539AF400CD451A /* LoginVC.mm */,
+				F0429AB21D5B587C00AB1AF2 /* DialogBoxVC.h */,
+				F0429AB31D5B587C00AB1AF2 /* DialogBoxVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -375,7 +404,13 @@
 		210872B51D539AB800CD451A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				210872B61D539AD900CD451A /* login.storyboard */,
+				F0429ABD1D5B5CCC00AB1AF2 /* login.storyboard */,
+				F0429ABF1D5B681F00AB1AF2 /* DialogView.h */,
+				F0429AC01D5B681F00AB1AF2 /* DialogView.m */,
+				F0429AC21D5B683B00AB1AF2 /* MessageView.h */,
+				F0429AC31D5B683B00AB1AF2 /* MessageView.m */,
+				F0429AC51D5B716200AB1AF2 /* InputView.h */,
+				F0429AC61D5B716200AB1AF2 /* InputView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -533,6 +568,15 @@
 			path = ThirdPart/pb_gen;
 			sourceTree = "<group>";
 		};
+		7A0195CACD1820BF4086F3A9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4E26CF1D3E3C2C72A2E55A2F /* Pods-chatroom.debug.xcconfig */,
+				A12571633B7BF65C5A1F4138 /* Pods-chatroom.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -540,9 +584,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 210872AB1D539A2400CD451A /* Build configuration list for PBXNativeTarget "chatroom" */;
 			buildPhases = (
+				1CC3E1B3290A44F007876F29 /* [CP] Check Pods Manifest.lock */,
 				2108727F1D539A2400CD451A /* Sources */,
 				210872801D539A2400CD451A /* Frameworks */,
 				210872811D539A2400CD451A /* Resources */,
+				890D44B02FA52889A2EA0CAE /* [CP] Embed Pods Frameworks */,
+				B71AC06DEBEEC680A14BC80E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -643,7 +690,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				210872B71D539AD900CD451A /* login.storyboard in Resources */,
+				F0429ABE1D5B5CCC00AB1AF2 /* login.storyboard in Resources */,
 				21F74D711D54EF0A0014E41C /* chatroom.proto in Resources */,
 				210872991D539A2400CD451A /* Assets.xcassets in Resources */,
 				2108729C1D539A2400CD451A /* LaunchScreen.storyboard in Resources */,
@@ -659,6 +706,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1CC3E1B3290A44F007876F29 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		890D44B02FA52889A2EA0CAE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-chatroom/Pods-chatroom-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B71AC06DEBEEC680A14BC80E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-chatroom/Pods-chatroom-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2108727F1D539A2400CD451A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -670,6 +765,7 @@
 				21F74D7A1D54FF340014E41C /* descriptor.pb.cc in Sources */,
 				21F74D5F1D54EB990014E41C /* wire_format_lite.cc in Sources */,
 				21F74D441D54EB990014E41C /* dynamic_message.cc in Sources */,
+				F0429AC41D5B683B00AB1AF2 /* MessageView.m in Sources */,
 				2108728B1D539A2400CD451A /* AppDelegate.m in Sources */,
 				21F74D571D54EB990014E41C /* once.cc in Sources */,
 				21F74D4D1D54EB990014E41C /* zero_copy_stream_impl.cc in Sources */,
@@ -682,12 +778,15 @@
 				21F74D491D54EB990014E41C /* printer.cc in Sources */,
 				21F74D521D54EB990014E41C /* repeated_field.cc in Sources */,
 				21F74D481D54EB990014E41C /* gzip_stream.cc in Sources */,
+				F0429AC11D5B681F00AB1AF2 /* DialogView.m in Sources */,
 				21F74D461D54EB990014E41C /* extension_set_heavy.cc in Sources */,
+				F0429AC71D5B716200AB1AF2 /* InputView.m in Sources */,
 				21F74D4B1D54EB990014E41C /* tokenizer.cc in Sources */,
 				21F74D4E1D54EB990014E41C /* zero_copy_stream_impl_lite.cc in Sources */,
 				21F74D3F1D54EB990014E41C /* parser.cc in Sources */,
 				21F74D581D54EB990014E41C /* stringprintf.cc in Sources */,
 				21F74D501D54EB990014E41C /* message_lite.cc in Sources */,
+				F0429AB41D5B587C00AB1AF2 /* DialogBoxVC.m in Sources */,
 				210872BA1D539AF400CD451A /* LoginVC.mm in Sources */,
 				21F74D5C1D54EB990014E41C /* text_format.cc in Sources */,
 				21F74D5A1D54EB990014E41C /* strutil.cc in Sources */,
@@ -821,6 +920,7 @@
 		};
 		210872AC1D539A2400CD451A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E26CF1D3E3C2C72A2E55A2F /* Pods-chatroom.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -828,6 +928,7 @@
 				HEADER_SEARCH_PATHS = (
 					../../../include/,
 					./chatroom/ThirdPart/,
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = chatroom/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -838,6 +939,7 @@
 		};
 		210872AD1D539A2400CD451A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A12571633B7BF65C5A1F4138 /* Pods-chatroom.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -845,6 +947,7 @@
 				HEADER_SEARCH_PATHS = (
 					../../../include/,
 					./chatroom/ThirdPart/,
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = chatroom/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

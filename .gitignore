@@ -52,3 +52,12 @@ test/MacOS/test_magnode/test_magnode.xcodeproj/xcuserdata/
 */*/*/.DS_Store
 */*/*/*/.DS_Store
 */*/*/*t/*/.DS_Store
+
+
+Podfile.lock
+Pods/
+chatroom.xcodeproj/project.xcworkspace/xcuserdata/apollo.xcuserdatad
+chatroom.xcodeproj/xcuserdata/apollo.xcuserdatad
+chatroom.xcworkspace
+chatroom.xcodeproj/project.xcworkspace/xcuserdata/apollo.xcuserdatad/
+chatroom.xcodeproj/xcuserdata/apollo.xcuserdatad/
