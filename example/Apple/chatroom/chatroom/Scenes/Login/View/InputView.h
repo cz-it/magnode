@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InputView : UIView
+@interface InputView : UIView <UITextFieldDelegate>
 
 @end

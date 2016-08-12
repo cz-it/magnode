@@ -97,11 +97,11 @@
     hud.minSize = CGSizeMake(150.f, 100.f);
     
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
-        [self connect2server];
+        //[self connect2server];
         hud.labelText = NSLocalizedString(@"Enter room...", @"HUD preparing title");
         [self enterRoom];
         
-        //[self.parentViewController performSegueWithIdentifier:@"pushDialogBox" sender:self];
+        [self.parentViewController performSegueWithIdentifier:@"pushDialogBox" sender:self];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hide:YES];

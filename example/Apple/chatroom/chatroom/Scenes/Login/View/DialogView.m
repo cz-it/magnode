@@ -9,12 +9,23 @@
 #import "DialogView.h"
 #import "MessageView.h"
 
+@interface DialogView() {
+    CGFloat msgHeight;
+}
+
+@end
+
 @implementation DialogView
 
 
 - (void) addMessage: (NSString *)name msg:(NSString *)msg {
-    MessageView *msgView = [[MessageView alloc] initWithFrame:CGRectMake(0, 0, 500, 80)];
-    [self addSubview: msgView];
+    self.directionalLockEnabled = NO;
+}
+
+- (void) layoutMessage {
+    if (msgHeight < self.frame.size.height) {
+        self.contentSize = CGSizeMake(self.contentSize.width, self.frame.size.height);
+    }
 }
 
 /*

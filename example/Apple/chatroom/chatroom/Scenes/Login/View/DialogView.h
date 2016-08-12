@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface DialogView : UIScrollView
+@property (nonatomic) CGFloat maxHeight;
+
 - (void) addMessage: (NSString *)name msg:(NSString *)msg;
+
+- (void) layoutMessage;
 @end
